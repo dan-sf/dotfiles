@@ -1,0 +1,14 @@
+#-----------------------------------------------
+# README for dot files: Maintained by Dan Fowler
+# Website: dsfcode.com
+# Version 1.0.0
+#-----------------------------------------------
+
+Dot files:
+     .bash_profile
+     .bashrc
+     .vimrc
+
+Discription:
+     - Dot files tracked via git for maintaining consistent unix environments across multiple systems
+
