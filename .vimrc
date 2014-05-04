@@ -15,7 +15,7 @@
 " Basic Vim Startup
 "------------------
      syntax on " Turn syntax on
-     colorscheme delek " Set the colorscheme
+     colorscheme darkblue " Set the colorscheme
      set history=1000 " Bigger history than default
      set ffs=unix,mac,dos " Use Unix as the standard file type
      set noswapfile | set nowritebackup | set nobackup " Make vim run faster by turning off swap files/backup
@@ -51,7 +51,7 @@
      set autoindent " Enable auto indent
      set iskeyword-=_ " Make _ a word devider
      set magic " For regular expressions turn magic on
-     set smarttab | set tabstop=5 | set shiftwidth=5 | set expandtab " Set up tab execution
+     set tabstop=5 | set shiftwidth=5 | set noexpandtab " Set up tab execution
      set nofoldenable " Don't automatically fold
      set foldmethod=manual " Use indents for folding
 
@@ -72,7 +72,7 @@
 
      " Use Ctrl-p to get tht current working path
      imap <c-p> <C-R>=expand('%:p:h')<CR>
-     nmap <c-p> i<F4>
+     nmap <c-p> i<c-p>
 
      " Put ${ } around a word (good for dealing with bash variables)
      imap <c-a> bi${ea}
