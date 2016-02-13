@@ -9,6 +9,6 @@ Dot files:
      .bashrc
      .vimrc
 
-Discription:
+Description:
      - Dot files tracked via git for maintaining consistent unix environments across multiple systems
 
