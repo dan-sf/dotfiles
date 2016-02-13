@@ -1,15 +1,35 @@
 "-----------------------------------------
 " Vimrc dot file: Maintained by Dan Fowler
 " Website: dsfcode.com
-" Version 1.0.0
 " 
 " Sections:
+"    Plugin Management
 "    Basics Vim Startup
 "    UI Tweaks
 "    Vim Functionality
 "    Text Handling
 "    Mappings
 "-----------------------------------------
+
+"------------------
+" Plugin Management
+"------------------
+     set nocompatible " Overrides the -C option (more vim like less vi like)
+     filetype off " Vundle required
+     set rtp+=~/.vim/bundle/Vundle.vim " Set Vundle runtime path
+     call vundle#begin() " Initialize Vundle
+
+     " Plugin calls
+     Plugin 'VundleVim/Vundle.vim' " Let Vundle manage Vundle
+     Plugin 'tpope/vim-fugitive' " Plugin for git
+     Plugin 'ctrlpvim/ctrlp.vim' " CtrlP fuzzy finder
+     Plugin 'MarcWeber/vim-addon-mw-utils' " SnipMate dependency
+     Plugin 'tomtom/tlib_vim' " SnipMate dependency
+     Plugin 'garbas/vim-snipmate' " SnipMate plugin
+     Plugin 'honza/vim-snippets' " Snippets
+     Plugin 'scrooloose/nerdtree' " NerdTree
+
+     call vundle#end() | filetype plugin indent on " End plugin management
 
 "------------------
 " Basic Vim Startup
@@ -33,7 +53,6 @@
 "------------------
 " Vim Functionality
 "------------------
-     set nocompatible " Overrides the -C option (more vim like less vi like)
      set hidden " Makes working with buffers easier
      set splitright " Default :sp to split to the right
      set tabpagemax=20 " Set the max number of tabs you can have open at once (default is 10)
