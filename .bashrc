@@ -1,13 +1,13 @@
-#------------------------------------------
-# Bashrc dot file: Maintained by Dan Fowler
-# Website: dsfcode.com
-# Version 1.0.0
-#------------------------------------------
+#----------------
+# Bashrc dot file
+#----------------
 
 umask 000
 
+export TMOUT=172800
+
 # Source global definitions
-[[ -f /etc/bashrc ]] && source /etc/bashrc; 
+[[ -f /etc/bashrc ]] && source /etc/bashrc;
 
 #----------------
 # General aliases
@@ -29,8 +29,13 @@ alias zcat='gunzip -c';
 alias tl=topline
 alias sl="sed '{:q;N;s/\\n/ /g;t q}'"
 alias findnonascii="perl -ane '{ if(m/[[:^ascii:]]/) { print  } }'"
-mkdir='mkdir -p'
+alias removenonascii="perl -ane '{ if(!m/[[:^ascii:]]/) { print  } }'"
+alias deletenonascii="tr -cd '[:print:]\t\n'"
 alias vim='vim -np'
+alias cdl="cd $OLDPWD"
+alias oddcolor="awk '{if (NR % 2 == 0) printf \"\033[1;31m%s\033[0m\n\",\$0; else print \$0;}'"
+alias t="tmux"
+alias lo="logout"
 
 # Miss spellings
 alias ehad=head

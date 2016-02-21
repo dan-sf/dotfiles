@@ -1,8 +1,6 @@
-#------------------------------------------------
-# Bash profile dot file: Maintained by Dan Fowler
-# Website: dsfcode.com
-# Version 1.0.0
-#------------------------------------------------
+#----------------------
+# Bash profile dot file
+#----------------------
 
 export EDITOR=vim
 
@@ -25,9 +23,9 @@ Black='\e[0;30m'; Red='\e[0;31m'; Green='\e[0;32m'; Yellow='\e[0;33m';
 Blue='\e[0;34m'; Purple='\e[0;35m'; Cyan='\e[0;36m'; White='\e[0;37m';
 PS1="\[$Green\]\h - \T (\[$Cyan\]\w\[$Green\]) \[$White\]"
 
-#---------
-#Functions
-#---------
+#----------
+# Functions
+#----------
 
 # Print the columns of a tab delimitated files
 function topline {
