@@ -111,3 +111,9 @@
     " Yank an entire file
     nmap <c-c> ggyG``
 
+    " Command for bash tab mapping
+    command Bashtabs :set tabstop=4 | set shiftwidth=4 | set noexpandtab
+
+    " Command for bash tab mapping
+    command Pythontabs :set tabstop=8 | set expandtab | set shiftwidth=4 | set softtabstop=4
+
