@@ -51,6 +51,7 @@
     set laststatus=2 " Always display the status line
     set showcmd " Use to view last command and also number of line/chars highlighted
     set statusline=%M\ %F\ %=[%{&ff},%{&ft}]\ [(%l,%v)/%L\ %p%%] " Set what is displayed on the status line
+    set nohls " Don't highlight when searching
 
 "------------------
 " Vim Functionality
@@ -89,14 +90,14 @@
 
     " Use Ctrl-n to toggle line numbers
     nmap <c-n> :set invnumber<CR>
-    imap <c-n> :set invnumber<CR>a
+    imap <c-n> <Esc>:set invnumber<CR>a
 
     " Use Ctrl-p to get tht current working path
     imap <c-p> <C-R>=expand('%:p:h')<CR>
     nmap <c-p> i<c-p>
 
     " Put ${ } around a word (good for dealing with bash variables)
-    imap <c-a> bi${ea}
+    imap <c-a> <Esc>bi${<Esc>ea}
 
     " Use control keys to get around in tabs
     nmap <c-l> gt
