@@ -17,11 +17,12 @@ export LS_COLORS="di=36;40:ln=36;40:so=32;40:pi=32;40:ex=31;40:bd=32;40:cd=32;40
 [[ -f ~/.bashrc ]] && source ~/.bashrc;
 [[ -f ~/.homerc ]] && source ~/.homerc;
 [[ -f ~/.workrc ]] && source ~/.workrc;
+[[ -f ~/.git-prompt.sh ]] && source ~/.git-prompt.sh;
 
 # Set the PS1
 Black='\e[0;30m'; Red='\e[0;31m'; Green='\e[0;32m'; Yellow='\e[0;33m';
 Blue='\e[0;34m'; Purple='\e[0;35m'; Cyan='\e[0;36m'; White='\e[0;37m';
-PS1="\[$Green\]\h - \T (\[$Cyan\]\w\[$Green\]) \[$White\]"
+PS1="\[$Green\]\h - \T (\[$Cyan\]\w\[$White\]\$(__git_ps1 ":%s")\[$Green\]) \[$White\]"
 
 #----------
 # Functions
