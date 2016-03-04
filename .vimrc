@@ -92,10 +92,6 @@
     nmap <c-n> :set invnumber<CR>
     imap <c-n> <Esc>:set invnumber<CR>a
 
-    " Use Ctrl-p to get tht current working path
-    imap <c-p> <C-R>=expand('%:p:h')<CR>
-    nmap <c-p> i<c-p>
-
     " Put ${ } around a word (good for dealing with bash variables)
     imap <c-a> <Esc>bi${<Esc>ea}
 
