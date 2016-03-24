@@ -76,6 +76,8 @@
     set tabstop=8 | set expandtab | set shiftwidth=4 | set softtabstop=4 " Set up tab execution (python style)
     set nofoldenable " Don't automatically fold
     set foldmethod=manual " Use indents for folding
+    autocmd BufEnter * if &filetype == "text" | setlocal ft=conf | endif " Syntax highlight text files like they are conf files
+    autocmd BufEnter * setlocal formatoptions-=cro " Stop vim from creating automatic comments, see :help fo-table for specifics
 
 "---------
 " Mappings
