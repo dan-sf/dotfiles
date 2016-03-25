@@ -101,6 +101,12 @@
     nmap <c-l> gt
     nmap <c-h> gT
 
+    " Use w and movement keys at the same time to move around windows
+    nmap wj <C-W><C-J> | nmap jw <C-W><C-J>
+    nmap wk <C-W><C-K> | nmap kw <C-W><C-K>
+    nmap wl <C-W><C-L> | nmap lw <C-W><C-L>
+    nmap wh <C-W><C-H> | nmap hw <C-W><C-H>
+
     " Switch two blocks of text
     vnoremap <c-x> <Esc>`.``gvP``P
 

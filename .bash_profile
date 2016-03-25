@@ -94,7 +94,7 @@ function set_title {
 }
 
 # Start tmux on login - Move to homerc with an if $1 == 'tmux' and exit in that if
-if which tmux > /dev/null
+if which tmux &> /dev/null
 then
     [[ ! $TERM =~ screen ]] && exec tmux
 fi
