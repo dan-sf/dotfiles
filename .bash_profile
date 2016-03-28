@@ -30,7 +30,8 @@ PS1="\[$Green\]\h - \T (\[$Cyan\]\w\[$White\]\$(__git_ps1 ":%s")\[$Green\]) \[$W
 
 # Print the columns of a tab delimitated files
 function topline {
-     head -1 | awk 'BEGIN{OFS="\t";FS="\t"}{print ""; for(i=1;i<=NF;i++) print i,$i; print ""}'
+     row=${1:-1}
+     awk -v row=$row 'BEGIN{OFS="\t";FS="\t"}{if (NR==row) { print ""; for(i=1;i<=NF;i++) print i,$i; print "";}}'
 }
 
 # Check running processes
