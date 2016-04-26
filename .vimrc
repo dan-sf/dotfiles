@@ -66,6 +66,7 @@
     set lazyredraw " Don't redraw while executing macros (good performance config)
     set nomore " Finish more output right away
     set helpheight=10 " Set help file height (default 20)
+    set timeoutlen=50 " Wait less on multiple key commands
 
 "--------------
 " Text Handling

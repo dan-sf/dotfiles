@@ -44,6 +44,12 @@ function mkcd {
      mkdir -p $1; cd $1
 }
 
+# Grep for python code in current dir tree
+function findpy {
+    term=${1}
+    find . -type f -name '*.py' | xargs grep ${term}
+}
+
 # Function for extracting archived files (found this code somewhere, not sure who originally wrote it)
 function extract {
      file="$1";
