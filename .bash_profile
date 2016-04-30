@@ -50,6 +50,17 @@ function findpy {
     find . -type f -name '*.py' | xargs grep ${term}
 }
 
+# Grep for text in launchd plist files
+function findld {
+    term=${1}
+    launchd_dirs="/Users/$USER/Library/LaunchAgents
+                  /Library/LaunchAgents
+                  /Library/LaunchDaemons
+                  /System/Library/LaunchAgents
+                  /System/Library/LaunchDaemons"
+    find ${launchd_dirs} -type f | xargs grep ${term}
+}
+
 # Function for extracting archived files (found this code somewhere, not sure who originally wrote it)
 function extract {
      file="$1";
