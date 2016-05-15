@@ -50,6 +50,12 @@ function findpy {
     find . -type f -name '*.py' | xargs grep ${term}
 }
 
+# Start a python venv
+function venv {
+    project=$1
+    source ~/.virtualenv/${project}/bin/activate
+}
+
 # Function for extracting archived files (found this code somewhere, not sure who originally wrote it)
 function extract {
      file="$1";
