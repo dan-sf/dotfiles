@@ -44,6 +44,14 @@ function mkcd {
      mkdir -p $1; cd $1
 }
 
+# Compile and run small java programs
+function jrun {
+    code=$1
+    name=`echo $1 | rev | cut -f2- -d"." | rev`
+    class=${2:-$name}
+    javac $code && java $class
+}
+
 # Grep for python code in current dir tree
 function findpy {
     term=${1}
