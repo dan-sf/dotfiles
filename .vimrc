@@ -24,6 +24,7 @@
     Plugin 'ctrlpvim/ctrlp.vim' " CtrlP fuzzy finder
     Plugin 'MarcWeber/vim-addon-mw-utils' " SnipMate dependency
     Plugin 'tomtom/tlib_vim' " SnipMate dependency
+    Plugin 'mileszs/ack.vim' " Grep and find within vim
     Plugin 'garbas/vim-snipmate' " SnipMate plugin
     Plugin 'honza/vim-snippets' " Snippets
     Plugin 'scrooloose/nerdtree' " NerdTree
