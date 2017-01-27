@@ -32,9 +32,11 @@ alias findnonascii="perl -ane '{ if(m/[[:^ascii:]]/) { print  } }'"
 alias removenonascii="perl -ane '{ if(!m/[[:^ascii:]]/) { print  } }'"
 alias deletenonascii="tr -cd '[:print:]\t\n'"
 alias vim='vim -np'
-alias cdl="cd $OLDPWD"
+alias cdl='cd $OLDPWD'
 alias oddcolor="awk '{if (NR % 2 == 0) printf \"\033[1;31m%s\033[0m\n\",\$0; else print \$0;}'"
 alias t="tmux"
+alias tph='tmux split-window -h -c $PWD'
+alias tpv='tmux split-window -v -c $PWD'
 alias lo="logout"
 
 # Miss spellings

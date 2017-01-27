@@ -24,12 +24,12 @@
     Plugin 'ctrlpvim/ctrlp.vim' " CtrlP fuzzy finder
     Plugin 'MarcWeber/vim-addon-mw-utils' " SnipMate dependency
     Plugin 'tomtom/tlib_vim' " SnipMate dependency
-    Plugin 'mileszs/ack.vim' " Grep and find within vim
     Plugin 'garbas/vim-snipmate' " SnipMate plugin
     Plugin 'honza/vim-snippets' " Snippets
     Plugin 'scrooloose/nerdtree' " NerdTree
     Plugin 'vim-airline/vim-airline-themes' " Powerline for vim
     Plugin 'vim-airline/vim-airline' " Powerline for vim
+    Plugin 'sophacles/vim-processing.git' " Add processing functionality
     let g:airline_theme='papercolor'
 
     call vundle#end() | filetype plugin indent on " End plugin management
@@ -108,6 +108,9 @@
     nmap wk <C-W><C-K> | nmap kw <C-W><C-K>
     nmap wl <C-W><C-L> | nmap lw <C-W><C-L>
     nmap wh <C-W><C-H> | nmap hw <C-W><C-H>
+
+    " Map jk and kj to Esc
+    imap jk <Esc> | imap kj <Esc>
 
     " Switch two blocks of text
     vnoremap <c-x> <Esc>`.``gvP``P

@@ -105,7 +105,7 @@ function prun {
           [[ $1 == "" ]] && sketch=`pwd`;
           [[ $1 != "" ]] && sketch=`pwd`"/"`echo $1 | sed 's;/$;;'`;
 
-          processing-java --run --sketch="$sketch" --output="$sketch/.tmp_output";
+          processing-java --sketch="$sketch" --output="$sketch/.tmp_output" --run;
           rm -r "$sketch/.tmp_output";
      else
           echo 'ERROR: Please enter the path to your sketch relative to your current location, ".", "..", "~", and full paths will not work with this function';
