@@ -4,8 +4,6 @@
 
 umask 000
 
-export TMOUT=172800
-
 # Source global definitions
 [[ -f /etc/bashrc ]] && source /etc/bashrc;
 
@@ -35,8 +33,6 @@ alias vim='vim -np'
 alias cdl='cd $OLDPWD'
 alias oddcolor="awk '{if (NR % 2 == 0) printf \"\033[1;31m%s\033[0m\n\",\$0; else print \$0;}'"
 alias t="tmux"
-alias tph='tmux split-window -h -c $PWD'
-alias tpv='tmux split-window -v -c $PWD'
 alias lo="logout"
 
 # Miss spellings
