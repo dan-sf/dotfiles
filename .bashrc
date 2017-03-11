@@ -25,7 +25,6 @@ alias .='echo $PWD'
 alias grep='grep --color'
 alias zcat='gunzip -c';
 alias tl=topline
-alias sl="sed '{:q;N;s/\\n/ /g;t q}'"
 alias findnonascii="perl -ane '{ if(m/[[:^ascii:]]/) { print  } }'"
 alias removenonascii="perl -ane '{ if(!m/[[:^ascii:]]/) { print  } }'"
 alias deletenonascii="tr -cd '[:print:]\t\n'"

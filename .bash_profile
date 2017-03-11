@@ -34,6 +34,11 @@ function topline {
      awk -v row=$row 'BEGIN{OFS="\t";FS="\t"}{if (NR==row) { print ""; for(i=1;i<=NF;i++) print i,$i; print "";}}'
 }
 
+# Print input all on the same line
+function sl {
+    awk 'BEGIN{ORS=" "}{print $0}' | awk '{print}'
+}
+
 # Check running processes
 function psme {
     ps auxww | grep $USER
