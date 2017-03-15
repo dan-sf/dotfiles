@@ -33,6 +33,7 @@ alias cdl='cd $OLDPWD'
 alias oddcolor="awk '{if (NR % 2 == 0) printf \"\033[1;31m%s\033[0m\n\",\$0; else print \$0;}'"
 alias t="tmux"
 alias lo="logout"
+alias stoe="sed 's/ /\\\ /g'"
 
 # Miss spellings
 alias ehad=head
