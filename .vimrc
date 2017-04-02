@@ -99,6 +99,10 @@
     " Put ${ } around a word (good for dealing with bash variables)
     imap <c-a> <Esc>bi${<Esc>ea}
 
+    " Use Ctrl-m to toggle paste mode
+    nmap <c-m> :set invpaste<CR>
+    imap <c-m> <Esc>:set invpaste<CR>a
+
     " Use control keys to get around in tabs
     nmap <c-l> gt
     nmap <c-h> gT
@@ -114,9 +118,6 @@
 
     " Switch two blocks of text
     vnoremap <c-x> <Esc>`.``gvP``P
-
-    " Place #---... around comments
-    nmap <Leader>c Y2pk:s;[^#\/"];-;g<CR>jj:s;[^#\/"];-;g<CR>k
 
     " Yank an entire file
     nmap <c-c> ggyG``
