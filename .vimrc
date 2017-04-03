@@ -99,9 +99,10 @@
     " Put ${ } around a word (good for dealing with bash variables)
     imap <c-a> <Esc>bi${<Esc>ea}
 
-    " Use Ctrl-m to toggle paste mode
-    nmap <c-m> :set invpaste<CR>
-    imap <c-m> <Esc>:set invpaste<CR>a
+    " Use F12 (func F12 on mac) to toggle paste mode
+    nmap <F12> :set invpaste<CR>
+    imap <F12> <Esc>:set invpaste<CR>a
+    set pastetoggle=<F12>
 
     " Use control keys to get around in tabs
     nmap <c-l> gt
