@@ -30,6 +30,7 @@
     Plugin 'vim-airline/vim-airline-themes' " Powerline for vim
     Plugin 'vim-airline/vim-airline' " Powerline for vim
     Plugin 'sophacles/vim-processing.git' " Add processing functionality
+    Plugin 'dsfcode/hive.vim.git' " Add hive syntax
     let g:airline_theme='papercolor'
 
     call vundle#end() | filetype plugin indent on " End plugin management
