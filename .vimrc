@@ -31,6 +31,7 @@
     Plugin 'vim-airline/vim-airline' " Powerline for vim
     Plugin 'sophacles/vim-processing.git' " Add processing functionality
     Plugin 'dsfcode/hive.vim.git' " Add hive syntax
+    Plugin 'derekwyatt/vim-scala' " Add scala syntax
     let g:airline_theme='papercolor'
 
     call vundle#end() | filetype plugin indent on " End plugin management
@@ -123,6 +124,9 @@
 
     " Yank an entire file
     nmap <c-c> ggyG``
+
+    " Copy highlighted text to the clipboard
+    vmap <c-c> :w !pbcopy<CR><CR>
 
     " Command for bash tab mapping
     command Bashtabs :set tabstop=4 | set shiftwidth=4 | set noexpandtab
