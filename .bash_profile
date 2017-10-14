@@ -3,6 +3,7 @@
 #----------------------
 
 export EDITOR=vim
+export PATH="/usr/local/sbin:$PATH"
 
 # Big history, ignore duplicate entries
 export HISTCONTROL=ignoredups;
