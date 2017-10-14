@@ -15,4 +15,5 @@ brew install tmux
 brew install reattach-to-user-namespace
 brew install tree
 brew install wget
+brew install coreutils
 
