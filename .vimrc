@@ -32,6 +32,7 @@
     Plugin 'sophacles/vim-processing.git' " Add processing functionality
     Plugin 'dsfcode/hive.vim.git' " Add hive syntax
     Plugin 'derekwyatt/vim-scala' " Add scala syntax
+    Plugin 'zig-lang/zig.vim' " Add zig syntax
     let g:airline_theme='papercolor'
 
     call vundle#end() | filetype plugin indent on " End plugin management
