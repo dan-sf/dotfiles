@@ -2,26 +2,49 @@
 
 set -e
 
+# Install command from brew.sh
+function get_brew {
+    echo "Installing brew..."
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+# Install brew program if not already installed
+function brew_install {
+    program=$1
+    args=$*
+    echo "Brew: Installing '$program' if not already installed. Otherwise continue..."
+    brew list $program &> /dev/null || brew install $args
+}
+
+# Check if apple command line tools have been installed (this command will fail
+# if the command line tools have not been installed)
+echo "Checking if Apple's command line tools have been installed..."
+git --version > /dev/null
+
+# Check if the JDK has been installed
+echo "Checking if the JDK has been installed..."
+java -version &> /dev/null
+
 # Get brew if not installed
-[[ `which brew &> /dev/null; echo $?` != 0 ]] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+which brew > /dev/null || get_brew
 
 # Install packages
-brew install dos2unix
-brew install findutils --with-default-names
-brew install gawk
-brew install maven
-brew install mysql
-brew install perl
-brew install python
-brew install python3
-brew install rename
-brew install tmux
-brew install reattach-to-user-namespace
-brew install tree
-brew install wget
-brew install coreutils
-brew install cloc
-brew install cmake
-brew install scala
-brew install sbt
+brew_install dos2unix
+brew_install findutils --with-default-names
+brew_install gawk
+brew_install maven
+brew_install mysql
+brew_install perl
+brew_install python
+brew_install python3
+brew_install rename
+brew_install tmux
+brew_install reattach-to-user-namespace
+brew_install tree
+brew_install wget
+brew_install coreutils
+brew_install cloc
+brew_install cmake
+brew_install scala
+brew_install sbt
 
