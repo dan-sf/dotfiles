@@ -33,7 +33,11 @@
     Plugin 'dsfcode/hive.vim.git' " Add hive syntax
     Plugin 'derekwyatt/vim-scala' " Add scala syntax
     Plugin 'zig-lang/zig.vim' " Add zig syntax
+    Plugin 'b4b4r07/vim-hcl' " Add hcl syntax
     let g:airline_theme='papercolor'
+
+    " CtrlP ignore specific files/dirs
+    let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.(git|hg|svn)|venv|env)$', 'file': '\v\.(pyc)$' }
 
     call vundle#end() | filetype plugin indent on " End plugin management
 
