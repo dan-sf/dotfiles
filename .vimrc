@@ -60,6 +60,7 @@
     set showcmd " Use to view last command and also number of line/chars highlighted
     set statusline=%M\ %F\ %=[%{&ff},%{&ft}]\ [(%l,%v)/%L\ %p%%] " Set what is displayed on the status line
     set nohls " Don't highlight when searching
+    hi Directory ctermfg=DarkCyan " Make dirs more visible in nerdtree
 
 "------------------
 " Vim Functionality
