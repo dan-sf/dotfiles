@@ -32,6 +32,7 @@ which brew > /dev/null || get_brew
 brew_install dos2unix
 brew_install findutils --with-default-names
 brew_install gawk
+brew_install git
 brew_install maven
 brew_install mysql
 brew_install perl
