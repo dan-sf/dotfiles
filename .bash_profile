@@ -67,7 +67,12 @@ function findpy {
 # Start a python venv
 function venv {
     project=$1
-    source ~/.virtualenv/${project}/bin/activate
+    if [[ $project == "" ]]
+    then
+        source venv/bin/activate
+    else
+        source ~/.virtualenv/${project}/bin/activate
+    fi
 }
 
 # Grep for text in launchd plist files
