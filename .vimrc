@@ -61,6 +61,7 @@
     set statusline=%M\ %F\ %=[%{&ff},%{&ft}]\ [(%l,%v)/%L\ %p%%] " Set what is displayed on the status line
     set nohls " Don't highlight when searching
     hi Directory ctermfg=DarkCyan " Make dirs more visible in nerdtree
+    hi Todo ctermbg=Black ctermfg=White " Change todo coloring
 
 "------------------
 " Vim Functionality
