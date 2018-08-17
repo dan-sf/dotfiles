@@ -34,6 +34,7 @@
     Plugin 'derekwyatt/vim-scala' " Add scala syntax
     Plugin 'zig-lang/zig.vim' " Add zig syntax
     Plugin 'b4b4r07/vim-hcl' " Add hcl syntax
+    Plugin 'rust-lang/rust.vim' " Add rust syntax
     let g:airline_theme='papercolor'
 
     " CtrlP ignore specific files/dirs
