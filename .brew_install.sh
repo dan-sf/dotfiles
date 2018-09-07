@@ -29,23 +29,24 @@ java -version &> /dev/null
 which brew > /dev/null || get_brew
 
 # Install packages
+brew_install cloc
+brew_install cmake
+brew_install coreutils
 brew_install dos2unix
 brew_install findutils --with-default-names
 brew_install gawk
 brew_install git
+brew_install htop
 brew_install maven
 brew_install mysql
 brew_install perl
 brew_install python
 brew_install python3
-brew_install rename
-brew_install tmux
 brew_install reattach-to-user-namespace
+brew_install rename
+brew_install sbt
+brew_install scala
+brew_install tmux
 brew_install tree
 brew_install wget
-brew_install coreutils
-brew_install cloc
-brew_install cmake
-brew_install scala
-brew_install sbt
 
