@@ -78,6 +78,7 @@
     set nomore " Finish more output right away
     set helpheight=10 " Set help file height (default 20)
     set timeoutlen=50 " Wait less on multiple key commands
+    set backspace=indent,eol,start " Correct delete handling
 
 "--------------
 " Text Handling
