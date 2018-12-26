@@ -107,6 +107,9 @@
     nmap <c-n> :set invnumber<CR>
     imap <c-n> <Esc>:set invnumber<CR>a
 
+    " Use Ctrl-x to toggle nerd tree
+    nmap <c-x> :NERDTreeToggle<CR>
+
     " Put ${ } around a word (good for dealing with bash variables)
     imap <c-a> <Esc>bi${<Esc>ea}
 
