@@ -37,8 +37,11 @@
     Plugin 'rust-lang/rust.vim' " Add rust syntax
     let g:airline_theme='papercolor'
 
-    " CtrlP ignore specific files/dirs
+    " CtrlP custom options
     let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.(git|hg|svn)|venv|env)$', 'file': '\v\.(pyc)$' }
+    if executable("ag")
+        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    en
 
     call vundle#end() | filetype plugin indent on " End plugin management
 
