@@ -35,12 +35,14 @@
     Plugin 'zig-lang/zig.vim' " Add zig syntax
     Plugin 'b4b4r07/vim-hcl' " Add hcl syntax
     Plugin 'rust-lang/rust.vim' " Add rust syntax
+    Plugin 'mileszs/ack.vim' " Add ack plugin for code search
     let g:airline_theme='papercolor'
 
     " CtrlP custom options
     let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.(git|hg|svn)|venv|env)$', 'file': '\v\.(pyc)$' }
     if executable("ag")
         let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+        let g:ackprg = 'ag --vimgrep'
     en
 
     call vundle#end() | filetype plugin indent on " End plugin management
