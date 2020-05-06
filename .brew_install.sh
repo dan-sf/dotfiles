@@ -29,24 +29,34 @@ java -version &> /dev/null
 which brew > /dev/null || get_brew
 
 # Install packages
-brew_install cloc
+brew_install bash
 brew_install cmake
 brew_install coreutils
 brew_install dos2unix
 brew_install findutils --with-default-names
 brew_install gawk
 brew_install git
+brew_install gnu-sed
+brew_install grip
 brew_install htop
+brew_install jq
 brew_install maven
-brew_install mysql
 brew_install perl
+brew_install pyenv
 brew_install python
-brew_install python3
 brew_install reattach-to-user-namespace
 brew_install rename
-brew_install sbt
-brew_install scala
+brew_install the_silver_searcher
 brew_install tmux
+brew_install tokei
 brew_install tree
+brew_install vim
 brew_install wget
+
+# Notable packages that we may want to also install:
+# docker
+# ctags
+# ctop
+# gcc/gdb
+# rust (via rustup)
 
