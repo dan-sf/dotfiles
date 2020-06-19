@@ -22,10 +22,6 @@
     Plugin 'VundleVim/Vundle.vim' " Let Vundle manage Vundle
     Plugin 'tpope/vim-fugitive' " Plugin for git
     Plugin 'ctrlpvim/ctrlp.vim' " CtrlP fuzzy finder
-    Plugin 'MarcWeber/vim-addon-mw-utils' " SnipMate dependency
-    Plugin 'tomtom/tlib_vim' " SnipMate dependency
-    Plugin 'garbas/vim-snipmate' " SnipMate plugin
-    Plugin 'honza/vim-snippets' " Snippets
     Plugin 'scrooloose/nerdtree' " NerdTree
     Plugin 'vim-airline/vim-airline-themes' " Powerline for vim
     Plugin 'vim-airline/vim-airline' " Powerline for vim
@@ -36,6 +32,8 @@
     Plugin 'b4b4r07/vim-hcl' " Add hcl syntax
     Plugin 'rust-lang/rust.vim' " Add rust syntax
     Plugin 'mileszs/ack.vim' " Add ack plugin for code search
+    Plugin 'racer-rust/vim-racer' " Rust code completion
+
     let g:airline_theme='papercolor'
 
     " CtrlP custom options
@@ -96,6 +94,7 @@
     set foldmethod=manual " Use indents for folding
     autocmd BufEnter * if &filetype == "text" | setlocal ft=conf | endif " Syntax highlight text files like they are conf files
     autocmd BufEnter * setlocal formatoptions-=cro " Stop vim from creating automatic comments, see :help fo-table for specifics
+    autocmd BufEnter *.md setlocal textwidth=80
 
 "---------
 " Mappings
