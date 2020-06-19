@@ -94,7 +94,8 @@
     set foldmethod=manual " Use indents for folding
     autocmd BufEnter * if &filetype == "text" | setlocal ft=conf | endif " Syntax highlight text files like they are conf files
     autocmd BufEnter * setlocal formatoptions-=cro " Stop vim from creating automatic comments, see :help fo-table for specifics
-    autocmd BufEnter *.md setlocal textwidth=80
+    autocmd BufEnter *.md setlocal textwidth=80 " Auto text wrap for md files
+    autocmd FileType java setlocal ts=2 sts=2 sw=2 " Two space indent for java
 
 "---------
 " Mappings
