@@ -34,6 +34,7 @@ brew_install cmake
 brew_install coreutils
 brew_install dos2unix
 brew_install findutils --with-default-names
+brew_install fzf
 brew_install gawk
 brew_install git
 brew_install gnu-sed
@@ -46,6 +47,7 @@ brew_install pyenv
 brew_install python
 brew_install reattach-to-user-namespace
 brew_install rename
+brew_install ripgrep
 brew_install the_silver_searcher
 brew_install tmux
 brew_install tokei

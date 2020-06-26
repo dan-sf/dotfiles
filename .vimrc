@@ -21,7 +21,6 @@
     " Plugin calls
     Plugin 'VundleVim/Vundle.vim' " Let Vundle manage Vundle
     Plugin 'tpope/vim-fugitive' " Plugin for git
-    Plugin 'ctrlpvim/ctrlp.vim' " CtrlP fuzzy finder
     Plugin 'scrooloose/nerdtree' " NerdTree
     Plugin 'vim-airline/vim-airline-themes' " Powerline for vim
     Plugin 'vim-airline/vim-airline' " Powerline for vim
@@ -33,15 +32,9 @@
     Plugin 'rust-lang/rust.vim' " Add rust syntax
     Plugin 'mileszs/ack.vim' " Add ack plugin for code search
     Plugin 'racer-rust/vim-racer' " Rust code completion
+    Plugin 'junegunn/fzf' | Plugin 'junegunn/fzf.vim' " FZF fuzzy finder plugins
 
     let g:airline_theme='papercolor'
-
-    " CtrlP custom options
-    let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.(git|hg|svn)|venv|env)$', 'file': '\v\.(pyc)$' }
-    if executable("ag")
-        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-        let g:ackprg = 'ag --vimgrep'
-    en
 
     call vundle#end() | filetype plugin indent on " End plugin management
 
@@ -150,4 +143,12 @@
 
     " Command for bash tab mapping
     command Pythontabs :set tabstop=8 | set expandtab | set shiftwidth=4 | set softtabstop=4
+
+    " Mappings for fzf
+    nmap <C-p> :Files<CR>
+    nmap <C-a> :Rg<CR>
+    nmap <C-b> :Buffers<CR>
+
+    " Only search file contents when using Rg (fzf)
+    command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, <bang>0)
 

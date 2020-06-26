@@ -54,3 +54,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+# Tell fzf to use ripgrep
+export FZF_DEFAULT_COMMAND='rg --files --ignore-file venv'
+
