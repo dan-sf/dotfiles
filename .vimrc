@@ -13,34 +13,41 @@
 "------------------
 " Plugin Management
 "------------------
-    set nocompatible " Overrides the -C option (more vim like less vi like)
-    filetype off " Vundle required
-    set rtp+=~/.vim/bundle/Vundle.vim " Set Vundle runtime path
-    call vundle#begin() " Initialize Vundle
 
-    " Plugin calls
-    Plugin 'VundleVim/Vundle.vim' " Let Vundle manage Vundle
-    Plugin 'tpope/vim-fugitive' " Plugin for git
-    Plugin 'scrooloose/nerdtree' " NerdTree
-    Plugin 'vim-airline/vim-airline-themes' " Powerline for vim
-    Plugin 'vim-airline/vim-airline' " Powerline for vim
-    Plugin 'sophacles/vim-processing.git' " Add processing functionality
-    Plugin 'dsfcode/hive.vim.git' " Add hive syntax
-    Plugin 'derekwyatt/vim-scala' " Add scala syntax
-    Plugin 'zig-lang/zig.vim' " Add zig syntax
-    Plugin 'b4b4r07/vim-hcl' " Add hcl syntax
-    Plugin 'rust-lang/rust.vim' " Add rust syntax
-    Plugin 'mileszs/ack.vim' " Add ack plugin for code search
-    Plugin 'racer-rust/vim-racer' " Rust code completion
-    Plugin 'junegunn/fzf' | Plugin 'junegunn/fzf.vim' " FZF fuzzy finder plugins
+    " Install vim-plug for plugin management
+    " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    " https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    call plug#begin('~/.vim/plugged')
+
+    Plug 'tpope/vim-fugitive' " Plugin for git
+    Plug 'scrooloose/nerdtree' " NerdTree
+
+    " Powerline for vim
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'vim-airline/vim-airline'
+
+    " FZF fuzzy finder plugins
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
+
+    " Language specific
+    Plug 'sophacles/vim-processing', { 'for': 'processing' } " Add processing functionality
+    Plug 'dan-sf/hive.vim', { 'for': 'hive' } " Add hive syntax
+    Plug 'derekwyatt/vim-scala', { 'for': 'scala' } " Add scala syntax
+    Plug 'zig-lang/zig.vim', { 'for': 'zig' } " Add zig syntax
+    Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' } " Add hcl syntax
+    Plug 'rust-lang/rust.vim', { 'for': 'rust' } " Add rust syntax
+    Plug 'racer-rust/vim-racer', { 'for': 'rust' } " Rust code completion
 
     let g:airline_theme='papercolor'
 
-    call vundle#end() | filetype plugin indent on " End plugin management
+    call plug#end()
 
 "------------------
 " Basic Vim Startup
 "------------------
+    set nocompatible " Overrides the -C option (more vim like less vi like)
     syntax on " Turn syntax on
     colorscheme delek " Set the colorscheme
     set history=1000 " Bigger history than default
