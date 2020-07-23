@@ -80,7 +80,7 @@
     set lazyredraw " Don't redraw while executing macros (good performance config)
     set nomore " Finish more output right away
     set helpheight=10 " Set help file height (default 20)
-    set timeoutlen=50 " Wait less on multiple key commands
+    set timeoutlen=500 " Wait less on multiple key commands
     set backspace=indent,eol,start " Correct delete handling
 
 "--------------
@@ -127,17 +127,15 @@
     nmap <c-l> gt
     nmap <c-h> gT
 
-    " Use w and movement keys at the same time to move around windows
-    nmap wj <C-W><C-J> | nmap jw <C-W><C-J>
-    nmap wk <C-W><C-K> | nmap kw <C-W><C-K>
-    nmap wl <C-W><C-L> | nmap lw <C-W><C-L>
-    nmap wh <C-W><C-H> | nmap hw <C-W><C-H>
+    " Use space as the leader key
+    noremap <space> <nop>
+    let mapleader = " "
 
-    " Map jk and kj to Esc
-    imap jk <Esc> | imap kj <Esc>
-
-    " Switch two blocks of text
-    vnoremap <c-x> <Esc>`.``gvP``P
+    " Use leader and movement keys to move around windows
+    nmap <leader>j <C-W><C-J>
+    nmap <leader>k <C-W><C-K>
+    nmap <leader>l <C-W><C-L>
+    nmap <leader>h <C-W><C-H>
 
     " Yank an entire file
     nmap <c-c> ggyG``
@@ -153,8 +151,8 @@
 
     " Mappings for fzf
     nmap <C-p> :Files<CR>
-    nmap <C-a> :Rg<CR>
-    nmap <C-b> :Buffers<CR>
+    nmap <leader>a :Rg<CR>
+    nmap <leader>b :Buffers<CR>
 
     " Only search file contents when using Rg (fzf)
     command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, <bang>0)
