@@ -29,6 +29,10 @@ PS1="\[$Green\]\h - \T (\[$Cyan\]\w\[$White\]\$(__git_ps1 ":%s")\[$Green\]) \[$W
 # Functions
 #----------
 
+function rgf {
+    rg -l . | rg $@
+}
+
 # Print the columns of a tab delimitated files
 function topline {
      row=${1:-1}
@@ -135,6 +139,34 @@ function set_title {
      mytitle="$1";
      echo -en '\033k'$mytitle'\033\\';
 }
+
+# Use pyenv to manage python versions
+if command -v pyenv &> /dev/null
+then
+    # This command runs 'pyenv rehash' which takes longer than I'd like for
+    # opening new terminal windows, just need to run this command when
+    # installing any packages with pyenv, sigh
+
+    # eval "$(pyenv init -)"
+    eval "$(pyenv init - | grep -v 'pyenv.rehash')"
+fi
+
+# Enable brew auto complete
+brew_prefix=$(brew --prefix)
+if which brew &> /dev/null; then
+    if [[ -f ${brew_prefix}/etc/bash_completion ]];
+    then
+        source ${brew_prefix}/etc/bash_completion &> /dev/null
+    fi
+    # for comp in ${brew_prefix}/etc/bash_completion.d/*
+    # do
+    #     [[ -f $comp ]] && source $comp
+    # done
+    # if [[ -f ${brew_prefix}/etc/profile.d/bash_completion.sh ]];
+    # then
+    #     source ${brew_prefix}/etc/profile.d/bash_completion.sh
+    # fi
+fi
 
 # Start tmux on login - Move to homerc with an if $1 == 'tmux' and exit in that if
 if which tmux &> /dev/null
