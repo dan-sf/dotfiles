@@ -28,8 +28,14 @@ alias tl=topline
 alias findnonascii="perl -ane '{ if(m/[[:^ascii:]]/) { print  } }'"
 alias removenonascii="perl -ane '{ if(!m/[[:^ascii:]]/) { print  } }'"
 alias deletenonascii="tr -cd '[:print:]\t\n'"
-alias vim='nvim -np'
-alias nvim='nvim -np'
+
+if which nvim &> /dev/null; then
+    alias vim='nvim -np'
+    alias nvim='nvim -np'
+else
+    alias vim='vim -np'
+fi
+
 alias cdl='cd $OLDPWD'
 alias oddcolor="awk '{if (NR % 2 == 0) printf \"\033[1;31m%s\033[0m\n\",\$0; else print \$0;}'"
 alias t="tmux"
