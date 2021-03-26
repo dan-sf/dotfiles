@@ -152,8 +152,8 @@ then
 fi
 
 # Enable brew auto complete
-brew_prefix=$(brew --prefix)
 if which brew &> /dev/null; then
+    brew_prefix=$(brew --prefix)
     if [[ -f ${brew_prefix}/etc/bash_completion ]];
     then
         source ${brew_prefix}/etc/bash_completion &> /dev/null

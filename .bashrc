@@ -30,8 +30,8 @@ alias removenonascii="perl -ane '{ if(!m/[[:^ascii:]]/) { print  } }'"
 alias deletenonascii="tr -cd '[:print:]\t\n'"
 
 if which nvim &> /dev/null; then
-    alias vim='nvim -np'
     alias nvim='nvim -np'
+    alias vim='nvim'
 else
     alias vim='vim -np'
 fi
