@@ -63,4 +63,5 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Tell fzf to use ripgrep
 export FZF_DEFAULT_COMMAND='rg --files --ignore-file venv'
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
