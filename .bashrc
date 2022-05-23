@@ -28,12 +28,10 @@ alias tl=topline
 alias findnonascii="perl -ane '{ if(m/[[:^ascii:]]/) { print  } }'"
 alias removenonascii="perl -ane '{ if(!m/[[:^ascii:]]/) { print  } }'"
 alias deletenonascii="tr -cd '[:print:]\t\n'"
+alias ports="lsof -i -P -n | grep LISTEN"
 
 if which nvim &> /dev/null; then
-    alias nvim='nvim -np'
     alias vim='nvim'
-else
-    alias vim='vim -np'
 fi
 
 alias cdl='cd $OLDPWD'

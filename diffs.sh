@@ -19,6 +19,11 @@ function diff_it {
         echo -e "${red}-------------------------${none}"
         diff $file_name $path
     fi
+
+    if ! [ -e ${path} ]
+    then
+        echo -e "WARNING: '${path}' does not exist locally"
+    fi
 }
 
 diff_it ~/.bashrc

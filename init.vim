@@ -45,6 +45,9 @@
     Plug 'rust-lang/rust.vim', { 'for': 'rust' } " Add rust syntax
     Plug 'racer-rust/vim-racer', { 'for': 'rust' } " Rust code completion
 
+    " Ctags handling
+    Plug 'ludovicchabant/vim-gutentags'
+
     let g:airline_theme='papercolor'
 
     call plug#end()
@@ -93,7 +96,6 @@
 " Text Handling
 "--------------
     set autoindent " Enable auto indent
-    set iskeyword-=_ " Make _ a word devider
     set magic " For regular expressions turn magic on
     set tabstop=8 | set expandtab | set shiftwidth=4 | set softtabstop=4 " Set up tab execution (python style)
     set nofoldenable " Don't automatically fold
@@ -144,10 +146,13 @@
     nmap <leader>h <C-W><C-H>
 
     " Yank an entire file
-    nmap <c-c> ggyG``
+    "nmap <c-c> ggyG``
+    nmap <leader>c :%y<CR>
 
     " Copy highlighted text to the clipboard
     vmap <c-c> :w !pbcopy<CR><CR>
+    " Yank highlighted text into the clipboard
+    vmap <leader>y "*y
 
     " Command for bash tab mapping
     command Bashtabs :set tabstop=4 | set shiftwidth=4 | set noexpandtab
@@ -160,6 +165,32 @@
     nmap <leader>a :Rg<CR>
     nmap <leader>b :Buffers<CR>
 
+    nmap <leader>n :bn<CR>
+    nmap <leader>p :bp<CR>
+
+    " Commands for having a buffer delete window
+    " https://github.com/junegunn/fzf.vim/pull/733#issuecomment-559720813
+    nmap <leader>d :BuffersDelete<CR>
+    function! s:list_buffers()
+      redir => list
+      silent ls
+      redir END
+      return split(list, "\n")
+    endfunction
+
+    function! s:delete_buffers(lines)
+      execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+    endfunction
+
+    command! BuffersDelete call fzf#run(fzf#wrap({
+      \ 'source': s:list_buffers(),
+      \ 'sink*': { lines -> s:delete_buffers(lines) },
+      \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+    \ }))
+
     " Only search file contents when using Rg (fzf)
     command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, <bang>0)
+
+    " Stop weird indenting when using comments in yaml files
+    autocmd FileType yaml setlocal indentkeys-=0#
 

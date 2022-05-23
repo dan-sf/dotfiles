@@ -53,7 +53,7 @@ brew_install bash
 brew_install cmake
 brew_install coreutils
 brew_install dos2unix
-brew_install findutils --with-default-names
+brew_install findutils
 brew_install fzf
 brew_install gawk
 brew_install git

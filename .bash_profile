@@ -143,12 +143,17 @@ function set_title {
 # Use pyenv to manage python versions
 if command -v pyenv &> /dev/null
 then
+    # Export vars so pyenv is enabled
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    export PATH="/Users/dan.fowler/.pyenv/shims:${PATH}"
+
     # This command runs 'pyenv rehash' which takes longer than I'd like for
     # opening new terminal windows, just need to run this command when
     # installing any packages with pyenv, sigh
 
     # eval "$(pyenv init -)"
-    eval "$(pyenv init - | grep -v 'pyenv.rehash')"
+    eval "$(pyenv init - | grep -v 'pyenv.rehash\|^echo')"
 fi
 
 # Enable brew auto complete
