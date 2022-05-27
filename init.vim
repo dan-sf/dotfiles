@@ -150,9 +150,12 @@
     nmap <leader>c :%y<CR>
 
     " Copy highlighted text to the clipboard
-    vmap <c-c> :w !pbcopy<CR><CR>
+    "vmap <c-c> :w !pbcopy<CR><CR>
     " Yank highlighted text into the clipboard
     vmap <leader>y "*y
+
+    " Prevent nvim from mapping Y to y$ (see default-mappings)
+    unmap Y
 
     " Command for bash tab mapping
     command Bashtabs :set tabstop=4 | set shiftwidth=4 | set noexpandtab
