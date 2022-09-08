@@ -153,6 +153,7 @@
     "vmap <c-c> :w !pbcopy<CR><CR>
     " Yank highlighted text into the clipboard
     vmap <leader>y "*y
+    vmap <leader>c "*y
 
     " Prevent nvim from mapping Y to y$ (see default-mappings)
     unmap Y
