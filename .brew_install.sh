@@ -61,8 +61,7 @@ brew_install gnu-sed
 brew_install grip
 brew_install htop
 brew_install jq
-brew_install maven
-brew_install perl
+brew_install ctags
 brew_install pyenv
 brew_install python
 brew_install reattach-to-user-namespace
@@ -76,8 +75,7 @@ brew_install neovim
 brew_install wget
 
 # Notable packages that we may want to also install:
-# docker
-# ctags
+# docker (probably want to use docker desktop over brew install)
 # ctop
 # gcc/gdb
 # rust (via rustup)
