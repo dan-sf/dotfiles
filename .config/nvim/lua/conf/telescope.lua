@@ -56,5 +56,5 @@ require('telescope').setup{
 util.nnoremap("<leader>f", "<cmd>Telescope find_files<cr>")
 util.nnoremap("<leader>g", "<cmd>Telescope live_grep<cr>")
 util.nnoremap("<leader>b", "<cmd>Telescope buffers<cr>")
-util.nnoremap("<leader>h", "<cmd>Telescope help_tags<cr>")
+-- util.nnoremap("<leader>h", "<cmd>Telescope help_tags<cr>")
 

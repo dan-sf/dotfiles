@@ -10,6 +10,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 
 vim.opt.mouse = "a" -- Allow for mouse use
+vim.opt.mousemodel = "extend" -- Don't go into visual block mode when cmd-clicking
 vim.opt.number = true -- Set line numbers to visible
 vim.opt.numberwidth = 4 -- Set default line number width
 
@@ -41,6 +42,7 @@ vim.opt.softtabstop = 4
 
 vim.opt.foldenable = false
 
+-- Enable cursorline highlight for the number side only
 vim.opt.cursorlineopt = "number"
 vim.opt.cursorline = true
 

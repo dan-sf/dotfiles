@@ -37,6 +37,27 @@ return packer.startup({
         --use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Treesitter
         use { 'nvim-treesitter/nvim-treesitter' } -- Treesitter
 
+        use "nvim-tree/nvim-tree.lua" -- File explorer
+        use 'nvim-lualine/lualine.nvim' -- Lua line
+
+        -- use 'hrsh7th/nvim-cmp'
+        -- -- Plug 'neovim/nvim-lspconfig'
+        -- -- Plug 'hrsh7th/cmp-nvim-lsp'
+        -- -- Plug 'hrsh7th/cmp-buffer'
+        -- -- Plug 'hrsh7th/cmp-path'
+        -- -- Plug 'hrsh7th/cmp-cmdline'
+
+        -- lsp
+        use {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+            "hrsh7th/nvim-cmp", -- Autocompletion
+            "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+            "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
+            "L3MON4D3/LuaSnip", -- Snippets plugin
+        }
+
         -- Telescope
         use {
             "nvim-telescope/telescope.nvim",
