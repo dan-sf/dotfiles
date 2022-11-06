@@ -2,7 +2,6 @@
 require "options"
 require "keymaps"
 require "plugins"
-require "colorscheme"
 require "conf.lualine"
 require "conf.lsp"
 

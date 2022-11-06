@@ -129,7 +129,7 @@ return packer.startup({
         }
 
         -- Only load the colorscheme I'm currently using
-        use "gruvbox-community/gruvbox"
+        use { "gruvbox-community/gruvbox", config = function() vim.cmd([[colorscheme gruvbox]]) end, }
         -- -- Get colorschemes
         -- use "folke/tokyonight.nvim"
         -- use "arcticicestudio/nord-vim"
