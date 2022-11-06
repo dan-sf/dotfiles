@@ -1,51 +1,65 @@
+local M = {}
 
 local util = require("util")
 
--- Disable netrw, recommended by nvim-tree plugin
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
+-- -- Disable netrw, recommended by nvim-tree plugin
+-- vim.g.loaded = 1
+-- vim.g.loaded_netrwPlugin = 1
 
--- Didn't want to install 'nvim-web-devicons' so this setup mostly just removes those default settings
-require("nvim-tree").setup({
-    renderer = {
-        icons = {
-            glyphs = {
-                default = "",
-                symlink = "",
-                bookmark = "",
-                folder = {
+local function load()
+    -- Didn't want to install 'nvim-web-devicons' so this setup mostly just removes those default settings
+    require("nvim-tree").setup({
+        renderer = {
+            icons = {
+                glyphs = {
                     default = "",
-                    arrow_closed = "",
-                    arrow_open = "",
-                    default = "",
-                    open = "",
-                    empty = "",
-                    empty_open = "",
                     symlink = "",
-                    symlink_open = "",
-                },
-                git = {
-                    -- @Note: we might just want to set these all to "", I just did that for the defaults with non-existant glyphs
-                    unstaged = "✗",
-                    staged = "✓",
-                    unmerged = "",
-                    renamed = "➜",
-                    untracked = "★",
-                    deleted = "",
-                    ignored = "◌",
-                },
+                    bookmark = "",
+                    folder = {
+                        default = "",
+                        arrow_closed = "",
+                        arrow_open = "",
+                        default = "",
+                        open = "",
+                        empty = "",
+                        empty_open = "",
+                        symlink = "",
+                        symlink_open = "",
+                    },
+                    git = {
+                        -- -- @Note: we might just want to set these all to "", I just did that for the defaults with non-existant glyphs
+                        -- unstaged = "✗",
+                        -- staged = "✓",
+                        -- unmerged = "",
+                        -- renamed = "➜",
+                        -- untracked = "★",
+                        -- deleted = "",
+                        -- ignored = "◌",
+
+                        unstaged = "",
+                        staged = "",
+                        unmerged = "",
+                        renamed = "",
+                        untracked = "",
+                        deleted = "",
+                        ignored = "",
+                    },
+                }
             }
-        }
-    },
-    view = {
-        mappings = {
-            list = {
-                { key = "l", action = "edit" },
-                { key = "h", action = "close_node" },
+        },
+        view = {
+            mappings = {
+                list = {
+                    { key = "l", action = "edit" },
+                    { key = "h", action = "close_node" },
+                    { key = "h", action = "close_node" },
+                    { key = "<C-[>", action = "dir_up" },
+                },
             },
         },
-    },
-})
+    })
+end
+M.load = load
 
 --   view.mappings.list = { -- BEGIN_DEFAULT_MAPPINGS
 --     { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
@@ -96,6 +110,10 @@ require("nvim-tree").setup({
 --     { key = "bmv",                            action = "bulk_move" },
 --   } -- END_DEFAULT_MAPPINGS
 
--- Nvim tree keymaps
-util.nnoremap("<leader>e", "<cmd>NvimTreeToggle<cr>")
+local function pre_load()
+    -- Nvim tree keymaps
+    util.nnoremap("<leader>e", "<cmd>NvimTreeToggle<cr>")
+end
+M.pre_load = pre_load
 
+return M

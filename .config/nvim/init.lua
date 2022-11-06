@@ -3,10 +3,7 @@ require "options"
 require "keymaps"
 require "plugins"
 require "colorscheme"
-require "conf.telescope"
-require "conf.nvim-tree"
 require "conf.lualine"
-require "conf.treesitter"
 require "conf.lsp"
 
 -- TODO
@@ -17,6 +14,7 @@ require "conf.lsp"
 -- Helpful links:
 -- https://github.com/LunarVim/Neovim-from-scratch
 -- https://github.com/rockerBOO/awesome-neovim
+-- https://github.com/NvChad/NvChad
 
 -- Plugins to look into/evaluate:
 -- https://github.com/kylechui/nvim-surround

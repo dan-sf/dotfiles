@@ -1,10 +1,10 @@
 
 -- TODO: these settings haven't been fully worked out, this needs some updating/tweaking
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "pyright" }
-})
+-- require("mason").setup()
+-- require("mason-lspconfig").setup({
+--     ensure_installed = { "sumneko_lua", "pyright" }
+-- })
 
 -- -- Mappings.
 -- -- See `:help vim.diagnostic.*` for documentation on any of the below functions

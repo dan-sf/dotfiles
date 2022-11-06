@@ -1,5 +1,4 @@
-
-M = {}
+local M = {}
 
 -- Shortcut functions/vars
 local keymap = vim.api.nvim_set_keymap

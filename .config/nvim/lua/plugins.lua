@@ -31,13 +31,36 @@ end
 return packer.startup({
     function(use)
         use 'wbthomason/packer.nvim' -- Let packer manage itself
-        use "tpope/vim-fugitive" -- Plugin for git
+
+        -- Plugin for git
+        use {
+            "tpope/vim-fugitive",
+            opt = true,
+            cmd = { "Git", },
+        }
+
+        -- Impatient for faster startup
+        use {
+            'lewis6991/impatient.nvim',
+            config = function() require('impatient') end,
+        }
 
         -- For some reason this doesn't work...
         --use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Treesitter
-        use { 'nvim-treesitter/nvim-treesitter' } -- Treesitter
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            config = function() require('conf.treesitter') end,
+        } -- Treesitter
 
-        use "nvim-tree/nvim-tree.lua" -- File explorer
+        use {
+            "nvim-tree/nvim-tree.lua", -- File explorer
+            opt = true,
+            cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen", },
+            setup = function() require('conf.nvim-tree').pre_load() end,
+            config = function() require('conf.nvim-tree').load() end,
+        }
+
+
         use 'nvim-lualine/lualine.nvim' -- Lua line
 
         -- use 'hrsh7th/nvim-cmp'
@@ -47,10 +70,44 @@ return packer.startup({
         -- -- Plug 'hrsh7th/cmp-path'
         -- -- Plug 'hrsh7th/cmp-cmdline'
 
-        -- lsp
+        -- lsp -- TODO: Can we make this optional? We only need to load this stuff when turning the lsp on...
         use {
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            {
+                "williamboman/mason.nvim",
+                opt=true,
+                cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+                config = function() require("mason").setup() end,
+            },
+            {
+                "williamboman/mason-lspconfig.nvim",
+                opt=true,
+                config = function()
+                    require("mason-lspconfig").setup({
+                        ensure_installed = { "sumneko_lua", "pyright" }
+                    })
+                end,
+            },
+        }
+
+        use {
+            -- { "williamboman/mason.nvim", opt=true, },
+            -- { "williamboman/mason-lspconfig.nvim", opt=true, },
+            -- { "neovim/nvim-lspconfig", opt=true, },
+            -- { "hrsh7th/nvim-cmp", opt=true, }, -- Autocompletion
+            -- { "hrsh7th/cmp-nvim-lsp", opt=true, }, -- LSP source for nvim-cmp
+            -- { "saadparwaiz1/cmp_luasnip", opt=true, }, -- Snippets source for nvim-cmp
+            -- { "L3MON4D3/LuaSnip", opt=true, }, -- Snippets plugin
+
+            -- { "williamboman/mason.nvim", opt=true, },
+            -- { "williamboman/mason-lspconfig.nvim", opt=true, },
+            -- { "neovim/nvim-lspconfig", opt=true, config = function() require('conf.lsp') end, cmd = { 'LspStart' }},
+            -- { "hrsh7th/nvim-cmp", opt=true, }, -- Autocompletion
+            -- { "hrsh7th/cmp-nvim-lsp", opt=true, }, -- LSP source for nvim-cmp
+            -- { "saadparwaiz1/cmp_luasnip", opt=true, }, -- Snippets source for nvim-cmp
+            -- { "L3MON4D3/LuaSnip", opt=true, }, -- Snippets plugin
+
+            -- "williamboman/mason.nvim",
+            -- "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
             "hrsh7th/nvim-cmp", -- Autocompletion
             "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
@@ -61,20 +118,28 @@ return packer.startup({
         -- Telescope
         use {
             "nvim-telescope/telescope.nvim",
-            requires = { "nvim-telescope/telescope-fzf-native.nvim", "nvim-lua/plenary.nvim" }
+            opt = true,
+            cmd = {'Telescope'},
+            setup = function() require('conf.telescope').pre_load() end,
+            config = function() require('conf.telescope').load() end,
+            requires = {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                { "nvim-lua/plenary.nvim", module = "plenary" }
+            },
         }
 
-        -- Get colorschemes
-        use "folke/tokyonight.nvim"
-        use "arcticicestudio/nord-vim"
+        -- Only load the colorscheme I'm currently using
         use "gruvbox-community/gruvbox"
-        use "sainnhe/everforest"
-        use "ajmwagar/vim-deus"
-        use "dikiaap/minimalist"
-        use "danilo-augusto/vim-afterglow"
-        use "lifepillar/vim-wwdc16-theme"
-        use "cocopon/iceberg.vim"
-        use "sainnhe/sonokai" -- this might be better than gruvbox...
+        -- -- Get colorschemes
+        -- use "folke/tokyonight.nvim"
+        -- use "arcticicestudio/nord-vim"
+        -- use "sainnhe/everforest"
+        -- use "ajmwagar/vim-deus"
+        -- use "dikiaap/minimalist"
+        -- use "danilo-augusto/vim-afterglow"
+        -- use "lifepillar/vim-wwdc16-theme"
+        -- use "cocopon/iceberg.vim"
+        -- use "sainnhe/sonokai" -- this might be better than gruvbox...
 
     -- TODO: These are the plugins from the previous init.vim, I don't think we need these but keeping here for now
     -- Plug 'tpope/vim-fugitive' -- Plugin for git
@@ -101,12 +166,6 @@ return packer.startup({
 
     -- -- Ctags handling
     -- Plug 'ludovicchabant/vim-gutentags'
-
-    -- -- Telescope
-    -- Plug 'nvim-telescope/telescope.nvim'
-    -- Plug 'nvim-lua/plenary.nvim'
-    -- Plug 'nvim-telescope/telescope-fzf-native.nvim'
-    -- Plug 'nvim-treesitter/nvim-treesitter'
 
         if packer_bootstrap then
             require('packer').sync()

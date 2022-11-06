@@ -54,3 +54,62 @@ vim.cmd [[autocmd FileType java setlocal ts=4 sts=4 sw=4]] -- Space indent for j
 -- New options settings, maybe we want these, maybe not
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 
+
+
+-- Disable builtin vim plugins @Note: We might want to re-enable if needed
+local default_plugins = {
+    "2html_plugin",
+    "getscript",
+    "getscriptPlugin",
+    "gzip",
+    "logipat",
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "matchit",
+    "tar",
+    "tarPlugin",
+    "rrhelper",
+    "spellfile_plugin",
+    "vimball",
+    "vimballPlugin",
+    "zip",
+    "zipPlugin",
+    "tutor",
+    "rplugin",
+    "syntax",
+    "synmenu",
+    "optwin",
+    "compiler",
+    "bugreport",
+    "ftplugin",
+}
+
+vim.g.loaded = 1
+for _, plugin in pairs(default_plugins) do
+    vim.g["loaded_" .. plugin] = 1
+end
+
+
+-- -- Make vim cmd for Telescope
+-- vim.cmd "command Telescope packadd telescope | lua << EOF require('conf.telescope') EOF | Telescope"
+
+
+-- @TODO: Figure out what these are used for...
+
+-- local default_providers = {
+--     "node",
+--     "perl",
+--     "python3",
+--     "ruby",
+-- }
+-- 
+-- for _, provider in ipairs(default_providers) do
+--     vim.g["loaded_" .. provider .. "_provider"] = 0
+-- end
+
+
+
+
+
