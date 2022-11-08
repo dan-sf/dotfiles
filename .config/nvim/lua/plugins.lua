@@ -72,13 +72,11 @@ return packer.startup({
 
         -- lsp -- TODO: Can we make this optional? We only need to load this stuff when turning the lsp on...
         use {
-            {
-                "williamboman/mason.nvim",
-                opt=true,
-                cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
-                config = function() require("mason").setup() end,
-            },
-            {
+            "williamboman/mason.nvim",
+            opt=true,
+            cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+            config = function() require("mason").setup() end,
+            requires = {
                 "williamboman/mason-lspconfig.nvim",
                 opt=true,
                 config = function()

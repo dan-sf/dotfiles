@@ -2,6 +2,8 @@
 require "options"
 require "keymaps"
 require "plugins"
+
+-- TODO: we can just load these via packer instead
 require "conf.lualine"
 require "conf.lsp"
 
@@ -18,4 +20,5 @@ require "conf.lsp"
 -- Plugins to look into/evaluate:
 -- https://github.com/kylechui/nvim-surround
 -- https://github.com/lewis6991/gitsigns.nvim
+-- https://github.com/lukas-reineke/indent-blankline.nvim
 
