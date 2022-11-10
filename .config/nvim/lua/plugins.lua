@@ -1,5 +1,5 @@
 
--- Install packer if its not already on the system
+-- Install packer if its not already on the system @TODO: We should probably init Mason and Treesitter as well if doing a clean install
 local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -60,8 +60,10 @@ return packer.startup({
             config = function() require('conf.nvim-tree').load() end,
         }
 
-
-        use 'nvim-lualine/lualine.nvim' -- Lua line
+        use {
+            'nvim-lualine/lualine.nvim', -- Lua line
+            config = function() require('conf.lualine') end,
+        }
 
         -- use 'hrsh7th/nvim-cmp'
         -- -- Plug 'neovim/nvim-lspconfig'
@@ -70,48 +72,82 @@ return packer.startup({
         -- -- Plug 'hrsh7th/cmp-path'
         -- -- Plug 'hrsh7th/cmp-cmdline'
 
+
+
+
+
+
         -- lsp -- TODO: Can we make this optional? We only need to load this stuff when turning the lsp on...
         use {
             "williamboman/mason.nvim",
-            opt=true,
-            cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+            -- opt=true,
+            -- cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
             config = function() require("mason").setup() end,
             requires = {
-                "williamboman/mason-lspconfig.nvim",
-                opt=true,
-                config = function()
-                    require("mason-lspconfig").setup({
-                        ensure_installed = { "sumneko_lua", "pyright" }
-                    })
-                end,
-            },
+                {
+                    "williamboman/mason-lspconfig.nvim",
+                    -- opt=true,
+                    config = function()
+                        require("mason-lspconfig").setup({
+                            ensure_installed = { "sumneko_lua", "pyright" }
+                        })
+                    end,
+                },
+                -- { "neovim/nvim-lspconfig" },
+            }
         }
 
         use {
-            -- { "williamboman/mason.nvim", opt=true, },
-            -- { "williamboman/mason-lspconfig.nvim", opt=true, },
-            -- { "neovim/nvim-lspconfig", opt=true, },
-            -- { "hrsh7th/nvim-cmp", opt=true, }, -- Autocompletion
-            -- { "hrsh7th/cmp-nvim-lsp", opt=true, }, -- LSP source for nvim-cmp
-            -- { "saadparwaiz1/cmp_luasnip", opt=true, }, -- Snippets source for nvim-cmp
-            -- { "L3MON4D3/LuaSnip", opt=true, }, -- Snippets plugin
-
-            -- { "williamboman/mason.nvim", opt=true, },
-            -- { "williamboman/mason-lspconfig.nvim", opt=true, },
-            -- { "neovim/nvim-lspconfig", opt=true, config = function() require('conf.lsp') end, cmd = { 'LspStart' }},
-            -- { "hrsh7th/nvim-cmp", opt=true, }, -- Autocompletion
-            -- { "hrsh7th/cmp-nvim-lsp", opt=true, }, -- LSP source for nvim-cmp
-            -- { "saadparwaiz1/cmp_luasnip", opt=true, }, -- Snippets source for nvim-cmp
-            -- { "L3MON4D3/LuaSnip", opt=true, }, -- Snippets plugin
-
-            -- "williamboman/mason.nvim",
-            -- "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
-            "hrsh7th/nvim-cmp", -- Autocompletion
-            "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-            "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-            "L3MON4D3/LuaSnip", -- Snippets plugin
+            -- opt = true,
+            -- cmd = { 'LspInfo', 'LspLog', 'LspRestart', 'LspStart', 'LspStop', },
+            config = function() require("conf.lsp").load() end,
+            requires = {
+                "hrsh7th/nvim-cmp", -- Autocompletion
+                "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+                "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
+                "L3MON4D3/LuaSnip", -- Snippets plugin
+            },
+            -- after = { "williamboman/mason.nvim", },
         }
+
+
+
+
+
+
+
+        -- use {
+        --     -- { "williamboman/mason.nvim", opt=true, },
+        --     -- { "williamboman/mason-lspconfig.nvim", opt=true, },
+        --     -- { "neovim/nvim-lspconfig", opt=true, },
+        --     -- { "hrsh7th/nvim-cmp", opt=true, }, -- Autocompletion
+        --     -- { "hrsh7th/cmp-nvim-lsp", opt=true, }, -- LSP source for nvim-cmp
+        --     -- { "saadparwaiz1/cmp_luasnip", opt=true, }, -- Snippets source for nvim-cmp
+        --     -- { "L3MON4D3/LuaSnip", opt=true, }, -- Snippets plugin
+
+        --     -- { "williamboman/mason.nvim", opt=true, },
+        --     -- { "williamboman/mason-lspconfig.nvim", opt=true, },
+        --     -- { "neovim/nvim-lspconfig", opt=true, config = function() require('conf.lsp') end, cmd = { 'LspStart' }},
+        --     -- { "hrsh7th/nvim-cmp", opt=true, }, -- Autocompletion
+        --     -- { "hrsh7th/cmp-nvim-lsp", opt=true, }, -- LSP source for nvim-cmp
+        --     -- { "saadparwaiz1/cmp_luasnip", opt=true, }, -- Snippets source for nvim-cmp
+        --     -- { "L3MON4D3/LuaSnip", opt=true, }, -- Snippets plugin
+
+        --     -- "williamboman/mason.nvim",
+        --     -- "williamboman/mason-lspconfig.nvim",
+        --     "neovim/nvim-lspconfig",
+        --     opt = true,
+        --     cmd = { 'LspInfo', 'LspLog', 'LspRestart', 'LspStart', 'LspStop', },
+        --     config = function() require("conf.lsp").load() end,
+        --     requires = {
+        --         "hrsh7th/nvim-cmp", -- Autocompletion
+        --         "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+        --         "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
+        --         "L3MON4D3/LuaSnip", -- Snippets plugin
+        --     },
+        --     after = { "williamboman/mason.nvim", },
+        -- }
 
         -- Telescope
         use {

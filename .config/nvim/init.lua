@@ -4,8 +4,7 @@ require "keymaps"
 require "plugins"
 
 -- TODO: we can just load these via packer instead
-require "conf.lualine"
-require "conf.lsp"
+--require "conf.lsp"
 
 -- TODO
 -- Get nvim-cmp/LSP/snippets working better
