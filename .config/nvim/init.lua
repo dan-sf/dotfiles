@@ -3,9 +3,6 @@ require "options"
 require "keymaps"
 require "plugins"
 
--- TODO: we can just load these via packer instead
---require "conf.lsp"
-
 -- TODO
 -- Get nvim-cmp/LSP/snippets working better
 -- Look into getting a proper debugger setup: https://github.com/mfussenegger/nvim-dap
@@ -15,9 +12,9 @@ require "plugins"
 -- https://github.com/LunarVim/Neovim-from-scratch
 -- https://github.com/rockerBOO/awesome-neovim
 -- https://github.com/NvChad/NvChad
+-- https://github.com/nanotee/nvim-lua-guide
 
 -- Plugins to look into/evaluate:
 -- https://github.com/kylechui/nvim-surround
 -- https://github.com/lewis6991/gitsigns.nvim
--- https://github.com/lukas-reineke/indent-blankline.nvim
 

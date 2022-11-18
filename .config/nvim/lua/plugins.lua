@@ -65,6 +65,23 @@ return packer.startup({
             config = function() require('conf.lualine') end,
         }
 
+        -- Tab line markers, helpful for nested python code
+        use {
+            'lukas-reineke/indent-blankline.nvim',
+            opt = true,
+            setup = function()
+                -- TODO: We might want to map this to a keyboard shortcut
+                vim.api.nvim_create_user_command('ToggleIndentBlankline', 'lua require("conf.indent_blankline").toggle()', {})
+            end,
+            config = function()
+                require("indent_blankline").setup {
+                    -- for example, context is off by default, use this to turn it on
+                    show_current_context = true,
+                    show_current_context_start = true,
+                }
+            end,
+        }
+
         -- use 'hrsh7th/nvim-cmp'
         -- -- Plug 'neovim/nvim-lspconfig'
         -- -- Plug 'hrsh7th/cmp-nvim-lsp'
