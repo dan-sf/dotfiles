@@ -60,6 +60,7 @@ function pre_load()
     -- Telescope keymaps
     util.nnoremap("<leader>f", "<cmd>Telescope find_files<cr>")
     util.nnoremap("<leader>g", "<cmd>Telescope live_grep<cr>")
+    util.nnoremap("<leader>ts", "<cmd>Telescope grep_string<cr>")
     util.nnoremap("<leader>b", "<cmd>Telescope buffers<cr>")
     -- util.nnoremap("<leader>h", "<cmd>Telescope help_tags<cr>")
 end
