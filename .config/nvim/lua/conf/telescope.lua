@@ -62,7 +62,7 @@ function pre_load()
     util.nnoremap("<leader>g", "<cmd>Telescope live_grep<cr>")
     util.nnoremap("<leader>ts", "<cmd>Telescope grep_string<cr>")
     util.nnoremap("<leader>b", "<cmd>Telescope buffers<cr>")
-    -- util.nnoremap("<leader>h", "<cmd>Telescope help_tags<cr>")
+    util.nnoremap("<leader>th", "<cmd>Telescope help_tags<cr>")
 end
 M.pre_load = pre_load
 

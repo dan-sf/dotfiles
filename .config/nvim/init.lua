@@ -7,6 +7,7 @@ require "plugins"
 -- Get nvim-cmp/LSP/snippets working better
 -- Look into getting a proper debugger setup: https://github.com/mfussenegger/nvim-dap
 -- Get telescope to open multiple selected files into buffers
+-- Take a look at this repo, there are some good settings we should evaluate using: https://github.com/ThePrimeagen/init.lua
 
 -- Helpful links:
 -- https://github.com/LunarVim/Neovim-from-scratch

@@ -5,7 +5,7 @@ local ensure_packer = function()
     local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
         fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-        vim.cmd [[packadd packer.nvim]]
+        vim.cmd("packadd packer.nvim")
         return true
     end
     return false
@@ -82,89 +82,45 @@ return packer.startup({
             end,
         }
 
-        -- use 'hrsh7th/nvim-cmp'
-        -- -- Plug 'neovim/nvim-lspconfig'
-        -- -- Plug 'hrsh7th/cmp-nvim-lsp'
-        -- -- Plug 'hrsh7th/cmp-buffer'
-        -- -- Plug 'hrsh7th/cmp-path'
-        -- -- Plug 'hrsh7th/cmp-cmdline'
-
-
-
-
-
-
-        -- lsp -- TODO: Can we make this optional? We only need to load this stuff when turning the lsp on...
+        -- Lsp setup
         use {
-            "williamboman/mason.nvim",
-            -- opt=true,
-            -- cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
-            config = function() require("mason").setup() end,
+            'VonHeikemen/lsp-zero.nvim',
+            opt = true,
+            cmd = { 'LspInfo', 'LspLog', 'LspRestart', 'LspStart', 'LspStop', },
             requires = {
-                {
-                    "williamboman/mason-lspconfig.nvim",
-                    -- opt=true,
-                    config = function()
-                        require("mason-lspconfig").setup({
-                            ensure_installed = { "sumneko_lua", "pyright" }
-                        })
-                    end,
-                },
-                -- { "neovim/nvim-lspconfig" },
-            }
-        }
+                -- LSP Support
+                {'neovim/nvim-lspconfig'},
+                {'williamboman/mason.nvim'},
+                {'williamboman/mason-lspconfig.nvim'},
 
-        use {
-            "neovim/nvim-lspconfig",
-            -- opt = true,
-            -- cmd = { 'LspInfo', 'LspLog', 'LspRestart', 'LspStart', 'LspStop', },
-            config = function() require("conf.lsp").load() end,
-            requires = {
-                "hrsh7th/nvim-cmp", -- Autocompletion
-                "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-                "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-                "L3MON4D3/LuaSnip", -- Snippets plugin
+                -- Autocompletion
+                {'hrsh7th/nvim-cmp'},
+                {'hrsh7th/cmp-buffer'},
+                {'hrsh7th/cmp-path'},
+                {'saadparwaiz1/cmp_luasnip'},
+                {'hrsh7th/cmp-nvim-lsp'},
+                {'hrsh7th/cmp-nvim-lua'},
+
+                -- Snippets
+                {'L3MON4D3/LuaSnip'},
+                {'rafamadriz/friendly-snippets'},
             },
-            -- after = { "williamboman/mason.nvim", },
+            -- This lazy loading does work unless I used the 'wants' feature,
+            -- however, this feature is un-documented and might be short lived:
+            -- https://github.com/wbthomason/packer.nvim/issues/537
+            -- Should watch out because if this feature is removed in the
+            -- future it'll break my conf
+            -- Looks like once this issue is resolved, we should be okay just using requires: https://github.com/wbthomason/packer.nvim/issues/87
+            wants = {
+                'nvim-cmp',
+                'nvim-lspconfig',
+                'mason.nvim',
+                'mason-lspconfig.nvim',
+            },
+            config = function()
+                require("conf.lsp")
+            end,
         }
-
-
-
-
-
-
-
-        -- use {
-        --     -- { "williamboman/mason.nvim", opt=true, },
-        --     -- { "williamboman/mason-lspconfig.nvim", opt=true, },
-        --     -- { "neovim/nvim-lspconfig", opt=true, },
-        --     -- { "hrsh7th/nvim-cmp", opt=true, }, -- Autocompletion
-        --     -- { "hrsh7th/cmp-nvim-lsp", opt=true, }, -- LSP source for nvim-cmp
-        --     -- { "saadparwaiz1/cmp_luasnip", opt=true, }, -- Snippets source for nvim-cmp
-        --     -- { "L3MON4D3/LuaSnip", opt=true, }, -- Snippets plugin
-
-        --     -- { "williamboman/mason.nvim", opt=true, },
-        --     -- { "williamboman/mason-lspconfig.nvim", opt=true, },
-        --     -- { "neovim/nvim-lspconfig", opt=true, config = function() require('conf.lsp') end, cmd = { 'LspStart' }},
-        --     -- { "hrsh7th/nvim-cmp", opt=true, }, -- Autocompletion
-        --     -- { "hrsh7th/cmp-nvim-lsp", opt=true, }, -- LSP source for nvim-cmp
-        --     -- { "saadparwaiz1/cmp_luasnip", opt=true, }, -- Snippets source for nvim-cmp
-        --     -- { "L3MON4D3/LuaSnip", opt=true, }, -- Snippets plugin
-
-        --     -- "williamboman/mason.nvim",
-        --     -- "williamboman/mason-lspconfig.nvim",
-        --     "neovim/nvim-lspconfig",
-        --     opt = true,
-        --     cmd = { 'LspInfo', 'LspLog', 'LspRestart', 'LspStart', 'LspStop', },
-        --     config = function() require("conf.lsp").load() end,
-        --     requires = {
-        --         "hrsh7th/nvim-cmp", -- Autocompletion
-        --         "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-        --         "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-        --         "L3MON4D3/LuaSnip", -- Snippets plugin
-        --     },
-        --     after = { "williamboman/mason.nvim", },
-        -- }
 
         -- Telescope
         use {
@@ -180,7 +136,7 @@ return packer.startup({
         }
 
         -- Only load the colorscheme I'm currently using
-        use { "gruvbox-community/gruvbox", config = function() vim.cmd([[colorscheme gruvbox]]) end, }
+        use { "gruvbox-community/gruvbox", config = function() vim.cmd("colorscheme gruvbox") end, }
         -- -- Get colorschemes
         -- use "folke/tokyonight.nvim"
         -- use "arcticicestudio/nord-vim"
