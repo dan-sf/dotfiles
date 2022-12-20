@@ -11,13 +11,37 @@ local nnoremap = util.nnoremap
 nmap("j", "gj")
 nmap("k", "gk")
 
--- Move a line of text using CTRL+[JK] TODO: I think there is a better way to do this...
-nmap("<c-J>", "ddp")
-nmap("<c-K>", "ddkP")
+-- Move a line of text using CTRL+[JK]
+nmap("<c-J>", ":m +1<CR>", {silent = true})
+nmap("<c-K>", ":m -2<CR>", {silent = true})
+vmap("<c-J>", ":m '>+1<CR><CR>gv", {silent = true})
+vmap("<c-K>", ":m '<-2<CR>gv", {silent = true})
 
 -- Use Ctrl-n to toggle line numbers
 nmap("<c-n>", ":set invnumber<CR>")
 imap("<c-n>", "<Esc>:set invnumber<CR>a")
+
+
+
+
+-- @TODO: Evaluate these keymappings
+-- -- Keep cursor in the middle of the screen when using crtl-d|u
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- -- Keep the cursor in the middle of the screen when searching
+-- vim.keymap.set("n", "n", "nzzzv")
+-- vim.keymap.set("n", "N", "Nzzzv")
+-- -- Paste over the selected without losing what you pasted from the clipboard (x is visual mode, see :help map-modes)
+-- vim.keymap.set("x", "<leader>p", [["_dP]])
+-- -- Yank to the system clipboard
+-- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+-- vim.keymap.set("n", "<leader>Y", [["+Y]])
+-- -- Delete without putting the deleted value into the clipboard
+-- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+
+
+
+
 
 -- TODO: I don't think I want to use nerdtree anymore...
 -- -- Use Ctrl-x to toggle nerd tree

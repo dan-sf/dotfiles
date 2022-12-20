@@ -19,7 +19,7 @@ if not status_ok then
     return
 end
 
--- TODO: we can enable this after getting things solidified
+-- Note: I think I'd prefer to just keep this manual, keeping the comment incase I change my mind
 -- -- Re-sync packer whenever this file is updated
 -- vim.cmd([[
 --   augroup packer_user_config
@@ -65,6 +65,12 @@ return packer.startup({
             config = function() require('conf.lualine') end,
         }
 
+        use {
+            'mbbill/undotree',
+            cmd = 'UndotreeToggle',
+            setup = function() vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle) end
+        }
+
         -- Tab line markers, helpful for nested python code
         use {
             'lukas-reineke/indent-blankline.nvim',
@@ -105,11 +111,11 @@ return packer.startup({
                 {'L3MON4D3/LuaSnip'},
                 {'rafamadriz/friendly-snippets'},
             },
-            -- This lazy loading does work unless I used the 'wants' feature,
+            -- This lazy loading does not work unless I used the 'wants' feature,
             -- however, this feature is un-documented and might be short lived:
             -- https://github.com/wbthomason/packer.nvim/issues/537
             -- Should watch out because if this feature is removed in the
-            -- future it'll break my conf
+            -- future it'll most likely break my conf
             -- Looks like once this issue is resolved, we should be okay just using requires: https://github.com/wbthomason/packer.nvim/issues/87
             wants = {
                 'nvim-cmp',
@@ -136,9 +142,16 @@ return packer.startup({
         }
 
         -- Only load the colorscheme I'm currently using
-        use { "gruvbox-community/gruvbox", config = function() vim.cmd("colorscheme gruvbox") end, }
+        use {
+            "gruvbox-community/gruvbox",
+            config = function()
+                -- Only highlight the number for the cursor line
+                vim.g.gruvbox_cursorline = "bg0"
+                vim.cmd("colorscheme gruvbox")
+            end,
+        }
         -- -- Get colorschemes
-        -- use "folke/tokyonight.nvim"
+        -- use "folke/tokyonight.nvim" -- the 'moon' or 'night' variants are good
         -- use "arcticicestudio/nord-vim"
         -- use "sainnhe/everforest"
         -- use "ajmwagar/vim-deus"
