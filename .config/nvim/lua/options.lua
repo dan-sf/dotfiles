@@ -51,6 +51,8 @@ vim.cmd [[autocmd BufEnter * setlocal formatoptions-=cro]] -- Stop vim from crea
 vim.cmd [[autocmd BufEnter *.md setlocal textwidth=80]] -- Auto text wrap for md files
 vim.cmd [[autocmd FileType java setlocal ts=4 sts=4 sw=4]] -- Space indent for java
 
+vim.opt.smartindent = true
+
 -- New options settings, maybe we want these, maybe not
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 

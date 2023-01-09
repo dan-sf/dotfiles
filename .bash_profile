@@ -73,7 +73,20 @@ function venv {
     project=$1
     if [[ $project == "" ]]
     then
-        source venv/bin/activate
+        if [[ ! -f venv/bin/activate ]] && [[ ! -f .venv/bin/activate ]]
+        then
+            echo "ERROR: venv/.venv dirs do not exist and no project name was given"
+            return 1
+        fi
+
+        if [[ -f venv/bin/activate ]] && [[ -f .venv/bin/activate ]]
+        then
+            echo "ERROR: both venv and .venv dirs exist"
+            return 1
+        fi
+
+        if [[ -f venv/bin/activate ]]; then source venv/bin/activate; fi
+        if [[ -f .venv/bin/activate ]]; then source .venv/bin/activate; fi
     else
         source ~/.virtualenv/${project}/bin/activate
     fi
@@ -146,7 +159,7 @@ then
     # Export vars so pyenv is enabled
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
-    export PATH="/Users/dan.fowler/.pyenv/shims:${PATH}"
+    export PATH="/Users/$USER/.pyenv/shims:${PATH}"
 
     # This command runs 'pyenv rehash' which takes longer than I'd like for
     # opening new terminal windows, just need to run this command when
