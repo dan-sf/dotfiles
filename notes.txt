@@ -1,0 +1,8 @@
+
+# Other dotfile repos using chezmoi as examples
+https://github.com/twpayne/dotfiles
+https://github.com/szorfein/dots
+https://github.com/narze/dotfiles
+https://github.com/felipecrs/dotfiles
+https://github.com/renemarc/dotfiles
+

@@ -5,6 +5,9 @@
 export EDITOR=vim
 export PATH="$HOME/.local/bin:/usr/local/sbin:/opt/homebrew/bin:$PATH"
 
+# @TODO: If we have brew available, we should exec 'brew shellenv', this should
+# export all brew related env vars
+
 # Big history, ignore duplicate entries
 export HISTCONTROL=ignoredups;
 export HISTSIZE=500000;

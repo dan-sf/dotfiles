@@ -107,7 +107,7 @@ Other optional cli/brew packages you may want to install:
 - asdf
 - exa
 - bat
-- delta"
+- git-delta"
 
 echo
 echo "Done"
