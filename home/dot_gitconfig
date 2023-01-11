@@ -1,3 +1,6 @@
+[user]
+    name = "dan-sf"
+    email = fowler.dn@gmail.com
 
 [push]
     default = simple
@@ -30,3 +33,8 @@
     tree=log --graph --pretty=oneline --all --decorate
     treee=log --graph --pretty=oneline --decorate --no-merges
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
