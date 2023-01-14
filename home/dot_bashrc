@@ -29,6 +29,8 @@ alias findnonascii="perl -ane '{ if(m/[[:^ascii:]]/) { print  } }'"
 alias removenonascii="perl -ane '{ if(!m/[[:^ascii:]]/) { print  } }'"
 alias deletenonascii="tr -cd '[:print:]\t\n'"
 alias ports="lsof -i -P -n | grep LISTEN"
+alias cm='chezmoi'
+alias cmcd="cd `chezmoi source-path`"
 
 if which nvim &> /dev/null; then
     alias vim='nvim'
