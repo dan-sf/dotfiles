@@ -50,9 +50,9 @@ local function load()
         view = {
             mappings = {
                 list = {
-                    { key = "l", action = "edit" },
-                    { key = "h", action = "close_node" },
-                    { key = "h", action = "close_node" },
+                    -- { key = "l", action = "edit" },
+                    -- { key = "h", action = "close_node" },
+                    -- { key = "h", action = "close_node" },
                     { key = "<C-[>", action = "dir_up" },
                 },
             },

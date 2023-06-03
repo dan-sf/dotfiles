@@ -79,6 +79,7 @@ vim.cmd([[unmap Y]])
 
 -- Open current file in IntelliJ
 vim.cmd([[command Idea :!open -na "IntelliJ IDEA CE.app" --args "%"]])
+vim.cmd([[command IntelliJ :!open -na "IntelliJ IDEA CE.app" --args "%"]])
 
 -- TODO: these were not ported over from the previous init.vim, I feel like we don't need these but keeping here until we are sure
 --     " Command for bash tab mapping

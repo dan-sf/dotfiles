@@ -40,6 +40,14 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 
+-- Try to make sure vim updates files that have been externally edited (this also relies on tmux focus events being set: 'set-option -g focus-events on')
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+-- TODO: Maybe we should also auto save when we leave vim -> au FocusLost,WinLeave * :silent! noautocmd w
+
 vim.opt.foldenable = false
 
 -- Enable cursorline highlight for the number side only
@@ -50,6 +58,10 @@ vim.cmd [[autocmd BufEnter * if &filetype == "text" | setlocal ft=conf | endif]]
 vim.cmd [[autocmd BufEnter * setlocal formatoptions-=cro]] -- Stop vim from creating automatic comments, see :help fo-table for specifics
 vim.cmd [[autocmd BufEnter *.md setlocal textwidth=80]] -- Auto text wrap for md files
 vim.cmd [[autocmd FileType java setlocal ts=4 sts=4 sw=4]] -- Space indent for java
+
+-- Set filetype to bash for custom rc files
+vim.cmd [[autocmd BufEnter .workrc setlocal ft=bash]]
+vim.cmd [[autocmd BufEnter .homerc setlocal ft=bash]]
 
 vim.opt.smartindent = true
 

@@ -35,8 +35,9 @@ return packer.startup({
         -- Plugin for git
         use {
             "tpope/vim-fugitive",
-            opt = true,
-            cmd = { "Git", },
+            -- opt = true,
+            -- cmd = { "Git", },
+            config = function() require('conf.fugitive') end,
         }
 
         -- Impatient for faster startup
@@ -90,12 +91,12 @@ return packer.startup({
 
         -- Lsp setup
         use {
-            'VonHeikemen/lsp-zero.nvim',
+            'neovim/nvim-lspconfig',
             opt = true,
             cmd = { 'LspInfo', 'LspLog', 'LspRestart', 'LspStart', 'LspStop', },
             requires = {
                 -- LSP Support
-                {'neovim/nvim-lspconfig'},
+                -- {'neovim/nvim-lspconfig'},
                 {'williamboman/mason.nvim'},
                 {'williamboman/mason-lspconfig.nvim'},
 
@@ -119,7 +120,7 @@ return packer.startup({
             -- Looks like once this issue is resolved, we should be okay just using requires: https://github.com/wbthomason/packer.nvim/issues/87
             wants = {
                 'nvim-cmp',
-                'nvim-lspconfig',
+                -- 'nvim-lspconfig',
                 'mason.nvim',
                 'mason-lspconfig.nvim',
             },
@@ -127,6 +128,46 @@ return packer.startup({
                 require("conf.lsp")
             end,
         }
+
+        -- -- Lsp setup
+        -- use {
+        --     'VonHeikemen/lsp-zero.nvim',
+        --     opt = true,
+        --     cmd = { 'LspInfo', 'LspLog', 'LspRestart', 'LspStart', 'LspStop', },
+        --     requires = {
+        --         -- LSP Support
+        --         {'neovim/nvim-lspconfig'},
+        --         {'williamboman/mason.nvim'},
+        --         {'williamboman/mason-lspconfig.nvim'},
+
+        --         -- Autocompletion
+        --         {'hrsh7th/nvim-cmp'},
+        --         {'hrsh7th/cmp-buffer'},
+        --         {'hrsh7th/cmp-path'},
+        --         {'saadparwaiz1/cmp_luasnip'},
+        --         {'hrsh7th/cmp-nvim-lsp'},
+        --         {'hrsh7th/cmp-nvim-lua'},
+
+        --         -- Snippets
+        --         {'L3MON4D3/LuaSnip'},
+        --         {'rafamadriz/friendly-snippets'},
+        --     },
+        --     -- This lazy loading does not work unless I used the 'wants' feature,
+        --     -- however, this feature is un-documented and might be short lived:
+        --     -- https://github.com/wbthomason/packer.nvim/issues/537
+        --     -- Should watch out because if this feature is removed in the
+        --     -- future it'll most likely break my conf
+        --     -- Looks like once this issue is resolved, we should be okay just using requires: https://github.com/wbthomason/packer.nvim/issues/87
+        --     wants = {
+        --         'nvim-cmp',
+        --         'nvim-lspconfig',
+        --         'mason.nvim',
+        --         'mason-lspconfig.nvim',
+        --     },
+        --     config = function()
+        --         require("conf.lsp")
+        --     end,
+        -- }
 
         -- Telescope
         use {
