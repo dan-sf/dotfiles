@@ -2,6 +2,9 @@
 
 set -eo pipefail
 
+# Chezmoi can run this file but since its only run once on new machines, I'd
+# rather just run this manually when needed
+
 # Install command from brew.sh
 function get_brew {
     echo "Installing brew..."

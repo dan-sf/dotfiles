@@ -47,3 +47,9 @@ chezmoi apply -v # Run for real if the above looks okay
 # See docs or use --help for more options
 ```
 
+## Install packages
+
+Chezmoi can manage/automate installer scripts, however, since I'm not setting up
+new machines often, I'd rather just manually run that install process. Most of
+the base packages that I use can be installed with `first.sh`.
+
