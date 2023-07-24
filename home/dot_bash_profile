@@ -28,6 +28,9 @@ Black='\e[0;30m'; Red='\e[0;31m'; Green='\e[0;32m'; Yellow='\e[0;33m';
 Blue='\e[0;34m'; Purple='\e[0;35m'; Cyan='\e[0;36m'; White='\e[0;37m';
 PS1="\[$Green\][\@] (\[$Cyan\]\w\[$White\]\$(__git_ps1 ":%s")\[$Green\]) \[$White\]"
 
+# TODO: This adds the number of jobs to the ps1, I don't like it that much, see if you can add the number of background jobs to the tmux window instead. When its bash it should be bash:3 or whatever...
+#PS1="\[$Green\][\@] \j $Green(\[$Cyan\]\w\[$White\]\$(__git_ps1 ":%s")\[$Green\]) \[$White\]"
+
 #----------
 # Functions
 #----------
@@ -168,8 +171,8 @@ then
     # opening new terminal windows, just need to run this command when
     # installing any packages with pyenv, sigh
 
-    # eval "$(pyenv init -)"
-    eval "$(pyenv init - | grep -v 'pyenv.rehash\|^echo')"
+    #eval "$(pyenv init -)"
+    eval "$(pyenv init - | grep -v 'pyenv.rehash')"
 fi
 
 # Enable brew auto complete
