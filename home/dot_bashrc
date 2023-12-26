@@ -21,7 +21,6 @@ alias b='bc -lq'
 alias awks='awk -v OFS="\t" -v FS="\t" -v OFMT="%f"'
 alias srt="sort -t$'\t'"
 alias ..='cd ..'
-alias .='echo $PWD'
 alias grep='grep --color'
 alias zcat='gunzip -c';
 alias tl=topline
@@ -32,6 +31,7 @@ alias ports="lsof -i -P -n | grep LISTEN"
 alias cm='chezmoi'
 alias cmcd="cd `chezmoi source-path`"
 alias j='jobs'
+alias g='git'
 
 if which nvim &> /dev/null; then
     alias vim='nvim'

@@ -1,8 +1,8 @@
 
--- Don't show INSERT/VISUAL/... in the command line. This is displayed by the lualine
-vim.opt.showmode = false
+-- -- Don't show INSERT/VISUAL/... in the command line. This is displayed by the lualine
+-- vim.opt.showmode = false
 
-require('lualine').setup {
+return {
     options = {
         icons_enabled = false,
         theme = 'gruvbox',

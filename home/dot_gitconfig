@@ -7,6 +7,7 @@
 
 [core]
     editor = vim
+    autocrlf = input
 
 [color]
     branch = auto
@@ -32,9 +33,13 @@
 [alias]
     tree=log --graph --pretty=oneline --all --decorate
     treee=log --graph --pretty=oneline --decorate --no-merges
+    co = checkout
+    c = commit
+    l = log
+    s = status
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true

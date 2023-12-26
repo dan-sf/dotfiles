@@ -3,6 +3,10 @@ require "options"
 require "keymaps"
 require "plugins"
 
+-- Leap/hop/flash - fast text movements
+-- Grapple/trailblazer/harpoon - fast movement between edit points in files
+-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects ???
+
 -- TODO
 -- Get nvim-cmp/LSP/snippets working better
 -- Look into getting a proper debugger setup: https://github.com/mfussenegger/nvim-dap
@@ -17,6 +21,8 @@ require "plugins"
 -- https://github.com/ThePrimeagen/init.lua
 
 -- Plugins to look into/evaluate:
--- https://github.com/kylechui/nvim-surround
--- https://github.com/lewis6991/gitsigns.nvim
+-- https://github.com/tpope/vim-surround
+-- https://github.com/tpope/vim-repeat
+-- https://github.com/tpope/vim-unimpaired
+-- https://github.com/tpope/vim-sleuth
 

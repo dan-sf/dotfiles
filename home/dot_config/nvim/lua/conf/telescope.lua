@@ -1,13 +1,10 @@
-local M = {}
-
-local util = require("util")
 
 -- @TODO: Try to get multi-file opening working, you should be able to get this done by using the code in this github issue: https://github.com/nvim-telescope/telescope.nvim/issues/1048#issuecomment-1225975038
 -- This seems a little hacky so maybe for now just rely on 'resume', if its something that I really want then come back to that post to try and implement
 
-local function load()
-    local actions = require("telescope.actions")
-    require('telescope').setup{
+local actions = require("telescope.actions")
+
+return {
         defaults = {
             -- Default configuration for telescope goes here:
             -- config_key = value,
@@ -33,12 +30,18 @@ local function load()
                     --["q"] = actions.send_to_qflist + actions.open_qflist,
                     ["q"] = actions.send_selected_to_qflist + actions.open_qflist,
                 }
-            }
+            },
+          preview = {
+              treesitter = {
+                  disable = { 'lua' } -- Lua treesitter is currently broken...
+              }
+          }
         },
         pickers = {
             find_files = {
                 -- Exclude venv dirs
-                find_command = { "fd", "--type", "f", "--color", "never", "--exclude", "venv" }
+                find_command = { "fd", "--type", "f", "--color", "never", "--exclude", "venv" }, -- TODO: Use fdignore over this exlucde
+                preview = false
             }
             -- Default configuration for builtin pickers goes here:
             -- picker_name = {
@@ -56,21 +59,4 @@ local function load()
             -- please take a look at the readme of the extension you want to configure
         }
     }
-end
-M.load = load
 
-function pre_load()
-    -- Telescope keymaps
-    util.nnoremap("<leader>f", "<cmd>Telescope find_files<cr>")
-    -- util.nnoremap("<leader>g", "<cmd>Telescope live_grep<cr>")
-    util.nnoremap("<leader>tg", "<cmd>Telescope live_grep<cr>")
-    util.nnoremap("<leader>tr", "<cmd>Telescope resume<cr>")
-    util.nnoremap("<leader>ts", "<cmd>Telescope grep_string<cr>")
-    util.nnoremap("<leader>tm", "<cmd>Telescope man_pages<cr>")
-    util.nnoremap("<leader>tj", "<cmd>Telescope jumplist<cr>")
-    util.nnoremap("<leader>b", "<cmd>Telescope buffers<cr>")
-    util.nnoremap("<leader>th", "<cmd>Telescope help_tags<cr>")
-end
-M.pre_load = pre_load
-
-return M
