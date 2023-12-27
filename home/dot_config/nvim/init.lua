@@ -3,7 +3,6 @@ require "options"
 require "keymaps"
 require "plugins"
 
--- Leap/hop/flash - fast text movements
 -- Grapple/trailblazer/harpoon - fast movement between edit points in files
 -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects ???
 
@@ -24,5 +23,4 @@ require "plugins"
 -- https://github.com/tpope/vim-surround
 -- https://github.com/tpope/vim-repeat
 -- https://github.com/tpope/vim-unimpaired
--- https://github.com/tpope/vim-sleuth
 

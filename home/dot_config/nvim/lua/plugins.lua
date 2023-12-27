@@ -198,7 +198,6 @@ lazy_plugins = {
       local util = require("util")
       -- Telescope keymaps
       util.nnoremap("<leader>f", "<cmd>Telescope find_files<cr>")
-      -- util.nnoremap("<leader>g", "<cmd>Telescope live_grep<cr>")
       util.nnoremap("<leader>tg", "<cmd>Telescope live_grep<cr>")
       util.nnoremap("<leader>tr", "<cmd>Telescope resume<cr>")
       util.nnoremap("<leader>ts", "<cmd>Telescope grep_string<cr>")
@@ -243,6 +242,34 @@ lazy_plugins = {
     },
   },
 
+  -- Plugin to help when jumping around multiple files. Similar plugins:
+  -- https://github.com/cbochs/grapple.nvim
+  -- https://github.com/LeonHeidelbach/trailblazer.nvim
+  {
+    "ThePrimeagen/harpoon",
+    init = function()
+      local harpoon = require("harpoon")
+      harpoon:setup()
+
+      vim.keymap.set("n", "<leader>mm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+      vim.keymap.set("n", "<leader>ma", function() harpoon:list():append() end)
+
+      vim.keymap.set("n", "<leader>m1", function() harpoon:list():select(1) end)
+      vim.keymap.set("n", "<leader>m2", function() harpoon:list():select(2) end)
+      vim.keymap.set("n", "<leader>m3", function() harpoon:list():select(3) end)
+      vim.keymap.set("n", "<leader>m4", function() harpoon:list():select(4) end)
+
+      -- TODO: Figure out why <C-S... isn't really working
+      -- -- Toggle previous & next buffers stored within Harpoon list
+      -- vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+      -- vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+      vim.keymap.set("n", "<leader>mp", function() harpoon:list():prev() end)
+      vim.keymap.set("n", "<leader>mn", function() harpoon:list():next() end)
+    end,
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+
   -- Only load the colorscheme I'm currently using
   {
     "gruvbox-community/gruvbox",
@@ -253,24 +280,24 @@ lazy_plugins = {
     end,
   },
 
-    -- -- Get colorschemes
-    -- "folke/tokyonight.nvim", -- the 'moon' or 'night' variants are good
-    -- "arcticicestudio/nord-vim",
-    -- "sainnhe/everforest",
-    -- "ajmwagar/vim-deus",
-    -- "dikiaap/minimalist",
-    -- "danilo-augusto/vim-afterglow",
-    -- "lifepillar/vim-wwdc16-theme",
-    -- "cocopon/iceberg.vim",
-    -- {
-    --     "sainnhe/sonokai",
-    --     config = function()
-    --         -- Only highlight the number for the cursor line
-    --         --vim.g.gruvbox_cursorline = "bg0"
-    --         vim.g.sonokai_style = "maia"
-    --         vim.cmd("colorscheme sonokai")
-    --     end,
-    -- },
+  -- -- Get colorschemes
+  -- "folke/tokyonight.nvim", -- the 'moon' or 'night' variants are good
+  -- "arcticicestudio/nord-vim",
+  -- "sainnhe/everforest",
+  -- "ajmwagar/vim-deus",
+  -- "dikiaap/minimalist",
+  -- "danilo-augusto/vim-afterglow",
+  -- "lifepillar/vim-wwdc16-theme",
+  -- "cocopon/iceberg.vim",
+  -- {
+  --   "sainnhe/sonokai",
+  --   config = function()
+  --     -- Only highlight the number for the cursor line
+  --     --vim.g.gruvbox_cursorline = "bg0"
+  --     vim.g.sonokai_style = "maia"
+  --     vim.cmd("colorscheme sonokai")
+  --   end,
+  -- },
 }
 
 require("lazy").setup(lazy_plugins, lazy_opts)
