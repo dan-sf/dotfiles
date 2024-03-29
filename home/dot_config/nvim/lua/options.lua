@@ -26,6 +26,9 @@ vim.opt.whichwrap = "<,>,[,],b,s" -- Use cursors, space, and backspace to wrap
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Don't de-indent lines with #
+vim.cmd [[ set cindent cinkeys-=0# ]]
+
 vim.opt.confirm = true -- Ask to save file if quitting with unsaved files open
 
 -- NOTE: not sure if we need these...
